@@ -1,14 +1,15 @@
 import { CSSProperties } from "react";
-import { useMediaQuery } from "../layout/MediaQueryContext";
-import Colors from "../style/color";
-import { IconMap, LocationIcon, AvailableIcon } from "../util/icon";
+import { useMediaQuery } from "../context/MediaQueryContext";
+import { useColors } from "../style/color";
+import { useIconMap } from "../util/icon";
 
 const Introduction = () => {
+    const Colors = useColors();
     const { isMobile, isTablet, isDesktop } = useMediaQuery();
 
     const introductionPageStyle: CSSProperties = {
         width: '100vw',
-        padding: isMobile ? '40px' : '6vw 2rem',
+        padding: isMobile ? '40px' : '6vw 4rem',
         backgroundColor: Colors.BACKGROUND_PRIMARY,
         color: Colors.TEXT_PRIMARY,
         display: 'flex',
@@ -29,14 +30,14 @@ const Introduction = () => {
 
     const titleStyle: CSSProperties = {
         fontSize: isMobile ? '20px' : '2.5vw',
-        color: Colors.TEXT_WHITE,
+        color: Colors.TEXT_PRIMARY,
         fontWeight: 'bold',
         marginBottom: '1rem',
     }
 
     const descriptionStyle: CSSProperties = {
         fontSize: isDesktop ? '1vw' : 
-            isTablet ? '1.3vw' : '10px',
+            isTablet ? '1.3vw' : '15px',
         textAlign: isMobile ? 'center' : 'start',
         color: Colors.TEXT_PRIMARY,
         fontWeight: 'normal',
@@ -84,13 +85,13 @@ const Introduction = () => {
     }
     
     const locationStyle: CSSProperties = {
-        fontSize: isMobile ? '10px' : '1vw',
+        fontSize: isMobile ? '15px' : '1vw',
         color: Colors.TEXT_PRIMARY,
         fontWeight: 'normal',
     }
 
     const metaContainerStyle: CSSProperties = {
-        margin: isDesktop ? '50px 0' : '20px 0',
+        margin: isDesktop ? '3vw 0' : '20px 0',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'start',
@@ -116,12 +117,12 @@ const Introduction = () => {
         marginRight: isDesktop ? '30px' : '0',
         position: 'relative',
         width: isDesktop
-          ? 'clamp(200px, 25vw, 250px)'
+          ? 'clamp(200px, 25vw, 300px)'
           : isTablet
           ? 'clamp(150px, 20vw, 200px)'
           : '240px',
         height: isDesktop
-          ? 'clamp(250px, 28vw, 280px)'
+          ? 'clamp(250px, 28vw, 350px)'
           : isTablet
           ? 'clamp(200px, 24vw, 240px)'
           : '250px',
@@ -132,12 +133,12 @@ const Introduction = () => {
       
       const imageStyle: CSSProperties = {
         width: isDesktop
-          ? 'clamp(200px, 25vw, 250px)'
+          ? 'clamp(200px, 25vw, 300px)'
           : isTablet
           ? 'clamp(150px, 20vw, 200px)'
           : '200px',
         height: isDesktop
-          ? 'clamp(250px, 28vw, 280px)'
+          ? 'clamp(250px, 28vw, 350px)'
           : isTablet
           ? 'clamp(200px, 24vw, 240px)'
           : '250px',
@@ -150,18 +151,18 @@ const Introduction = () => {
       const imageShadowStyle: CSSProperties = {
         position: 'absolute',
         width: isDesktop
-          ? 'clamp(200px, 25vw, 250px)'
+          ? 'clamp(200px, 25vw, 300px)'
           : isTablet
           ? 'clamp(150px, 20vw, 200px)'
           : '250px',
         height: isDesktop
-          ? 'clamp(250px, 28vw, 280px)'
+          ? 'clamp(250px, 28vw, 350px)'
           : isTablet
           ? 'clamp(200px, 24vw, 240px)'
           : '240px',
-        backgroundColor: Colors.TEXT_PRIMARY,
+        backgroundColor: Colors.BACKGROUND_TERTIARY,
         top: '30px',
-        left: isMobile ? '0' : '30px',
+        left: isMobile ? '-5px' : '30px',
         zIndex: 1,
       };
       
@@ -182,14 +183,14 @@ const Introduction = () => {
                 <div style={metaContainerStyle}>
                     <div style={locationContainerStyle}>
                         <div style={blockStyle}>
-                            <img src={LocationIcon} alt="Location" style={locationIconStyle} />
+                            <img src={useIconMap().location.icon} alt="Location" style={locationIconStyle} />
                         </div>
                         <h1 style={locationStyle}>Bangkok, Thailand</h1>
                     </div>
 
                     <div style={locationContainerStyle}>
                         <div style={blockStyle}>
-                            <img src={AvailableIcon} alt="Available" style={availableIconStyle} />
+                            <img src={useIconMap().available.icon} alt="Available" style={availableIconStyle} />
                         </div>
                         <h1 style={locationStyle}>Available for a new challenge</h1>
                     </div>
@@ -197,9 +198,9 @@ const Introduction = () => {
                 
 
                 <div style={iconContainerStyle}>
-                    <img src={IconMap.github.icon} alt="Github" style={iconStyle} onClick={() => IconMap.github.onClick()}/>
-                    <img src={IconMap.linkedin.icon} alt="LinkedIn" style={iconStyle} onClick={() => IconMap.linkedin.onClick()}/>
-                    <img src={IconMap.instagram.icon} alt="Instagram" style={iconStyle} onClick={() => IconMap.instagram.onClick()}/>
+                    <img src={useIconMap().github.icon} alt="Github" style={iconStyle} onClick={() => useIconMap().github.onClick()}/>
+                    <img src={useIconMap().linkedin.icon} alt="LinkedIn" style={iconStyle} onClick={() => useIconMap().linkedin.onClick()}/>
+                    <img src={useIconMap().instagram.icon} alt="Instagram" style={iconStyle} onClick={() => useIconMap().instagram.onClick()}/>
                 </div>
             </div>
 

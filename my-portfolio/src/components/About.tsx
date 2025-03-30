@@ -1,151 +1,74 @@
 import { CSSProperties } from "react";
-import Colors from "../style/color";
-import { useMediaQuery } from "../layout/MediaQueryContext";
-import { AvailableIcon, IconMap, LocationIcon } from "../util/icon";
+import { useColors } from "../style/color";
+import { useMediaQuery } from "../context/MediaQueryContext";
+import TitleContentPage from "./TitleContentPage";
+
 const About = () => {
+    const Colors = useColors();
     const { isMobile, isTablet, isDesktop } = useMediaQuery();
 
     const aboutPageStyle: CSSProperties = {
-        width: '100vw',
+        width: '100%',
         padding: isMobile ? '40px' : '6vw 2rem',
+        fontWeight: 'normal',
         backgroundColor: Colors.BACKGROUND_SECONDARY,
         color: Colors.TEXT_PRIMARY,
-    }
-
-    const titleContainerStyle: CSSProperties = {
-        fontSize: isMobile ? '20px' : '2.5vw',
-        color: Colors.TEXT_WHITE,
-        fontWeight: 'bold',
-        marginBottom: '1rem',
     }
 
     const contentStyle: CSSProperties = {
-        width: '100vw',
-        padding: isMobile ? '40px' : '6vw 2rem',
+        width: '100%',
+        padding: isMobile ? '40px 0' : '4vw 2rem 4vw 2rem',
         backgroundColor: Colors.BACKGROUND_SECONDARY,
-        flexDirection: isMobile ? 'column-reverse' : 'row',
+        flexDirection: isMobile ? 'column' : 'row',
+        display: 'flex',
         justifyContent: 'space-between',
-        alignItems: isMobile ? 'center' : 'flex-start',
+        alignItems: isMobile ? 'center' : 'start',
         gap: isMobile ? '60px' : '0',
     }
 
-    const leftContainerStyle: CSSProperties = {
-        flex: 1,
-        width: isDesktop ? '70%' : isTablet ? '60%' : '100%',
+    const leftContentStyle: CSSProperties = {
+        width: isMobile ? '100%' : '50%',
+        display: 'flex',
+        justifyContent: isDesktop ? 'flex-start' : 'center',
+        alignItems: 'center',
+    }
+
+    const rightContentStyle: CSSProperties = {
+        width: isMobile ? '100%' : '50%',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'start',
+        justifyContent: 'center',
         alignItems: isMobile ? 'center' : 'start',
     }
 
-    
-
-    const descriptionStyle: CSSProperties = {
-        fontSize: isDesktop ? '1vw' : 
-            isTablet ? '1.3vw' : '10px',
-        textAlign: isMobile ? 'center' : 'start',
-        color: Colors.TEXT_PRIMARY,
-        fontWeight: 'normal',
-    }
-
-    const iconContainerStyle: CSSProperties = {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'start',
-        alignItems: 'start',
-        gap: '10px',
-    }
-
-    const iconStyle: CSSProperties = {
-        width: isDesktop ? '30px' : isTablet ? '15px' : '25px',
-        height: isDesktop ? '30px' : isTablet ? '15px' : '25px',
-        cursor: 'pointer',
-    }
-
-    const blockStyle: CSSProperties = {
-        width: isDesktop ? '25px' : isTablet ? '15px' : '25px',
-        height: isDesktop ? '25px' : isTablet ? '15px' : '25px', 
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-    }
-
-    const locationIconStyle: CSSProperties = {
-        width: isDesktop ? '25px' : isTablet ? '15px' : '20px',
-        height: isDesktop ? '25px' : isTablet ? '15px' : '20px',
-    }
-
-    const availableIconStyle: CSSProperties = {
-        width: isDesktop? '10px': isTablet ? '5px' : '10px',
-        height: isDesktop? '10px': isTablet ? '5px' : '10px',
-    }
-
-    const locationContainerStyle: CSSProperties = {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'start',
-        alignItems: 'center',
-        gap: '10px',
-    }
-    
-    const locationStyle: CSSProperties = {
-        fontSize: isMobile ? '10px' : '1vw',
-        color: Colors.TEXT_PRIMARY,
-        fontWeight: 'normal',
-    }
-
-    const metaContainerStyle: CSSProperties = {
-        margin: isDesktop ? '50px 0' : '20px 0',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'start',
-        alignItems: 'start',
-        gap: isDesktop ? '10px' : '5px',
-    }
-
-    const nameStyle: CSSProperties = {
-        fontSize: isMobile ? '25px' : '3.5vw',
-        color: Colors.TEXT_PRIMARY,
-        fontWeight: 'normal',
-    }
-
-    const rightContainerStyle: CSSProperties = {
-        width: isDesktop ? '30%' : '40%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'start',
-        alignItems: isDesktop ? 'start' : 'center',
-    }
-
     const imageWrapperStyle: CSSProperties = {
-        marginRight: isDesktop ? '30px' : '0',
+        marginLeft: isDesktop ? '30px' : '0',
         position: 'relative',
         width: isDesktop
-          ? 'clamp(200px, 25vw, 250px)'
+          ? 'clamp(330px, 30vw, 450px)'
           : isTablet
-          ? 'clamp(150px, 20vw, 200px)'
-          : '200px',
+          ? 'clamp(200px, 30vw, 350px)'
+          : '240px',
         height: isDesktop
-          ? 'clamp(250px, 28vw, 280px)'
+          ? 'clamp(390px, 30vw, 480px)'
           : isTablet
-          ? 'clamp(200px, 24vw, 240px)'
+          ? 'clamp(260px, 30vw, 240px)'
           : '250px',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center', 
       };
       
       const imageStyle: CSSProperties = {
         width: isDesktop
-          ? 'clamp(200px, 25vw, 250px)'
+          ? 'clamp(330px, 30vw, 450px)'
           : isTablet
-          ? 'clamp(150px, 20vw, 200px)'
+          ? 'clamp(200px, 30vw, 350px)'
           : '200px',
         height: isDesktop
-          ? 'clamp(250px, 28vw, 280px)'
+          ? 'clamp(390px, 30vw, 480px)'
           : isTablet
-          ? 'clamp(200px, 24vw, 240px)'
+          ? 'clamp(260px, 30vw, 350px)'
           : '250px',
         objectFit: 'cover',
         zIndex: 2,
@@ -156,72 +79,67 @@ const About = () => {
       const imageShadowStyle: CSSProperties = {
         position: 'absolute',
         width: isDesktop
-          ? 'clamp(200px, 25vw, 250px)'
+          ? 'clamp(330px, 30vw, 450px)'
           : isTablet
-          ? 'clamp(150px, 20vw, 200px)'
-          : '200px',
-        height: isDesktop
-          ? 'clamp(250px, 28vw, 280px)'
-          : isTablet
-          ? 'clamp(200px, 24vw, 240px)'
+          ? 'clamp(200px, 30vw, 350px)'
           : '250px',
-        backgroundColor: Colors.TEXT_PRIMARY,
+        height: isDesktop
+          ? 'clamp(390px, 30vw, 480px)'
+          : isTablet
+          ? 'clamp(260px, 30vw, 350px)'
+          : '240px',
+        backgroundColor: Colors.BACKGROUND_TERTIARY,
         top: '30px',
-        left: '30px',
+        right: isMobile ? '-5px' : '30px',
         zIndex: 1,
       };
-      
+
+      const titleRightContentStyle: CSSProperties = {
+        fontSize: isMobile ? '20px' : isTablet ? '2.5vw' : '2vw',
+        color: Colors.TEXT_PRIMARY,
+        fontWeight: 'normal',
+        marginBottom: isMobile ? '20px' : '10px',
+        marginTop: isMobile ? '0px' : '-10px',
+      }
+
+      const descriptionRightContentStyle: CSSProperties = {
+        fontSize: isMobile ? '15px' : isTablet ? '1.5vw' : '1vw',
+        color: Colors.TEXT_PRIMARY,
+        fontWeight: 'normal',
+        textAlign: isMobile ? 'center' : 'start',
+      }
 
     return (
         <div style={aboutPageStyle}>
-            <div>
-                <h1>About me</h1>
-            </div>
+            <TitleContentPage title={"About me"} />
 
-    `        <div style={contentStyle}>
-
-                <div style={leftContainerStyle}>
-                    <h1 style={descriptionStyle}>
-                        I'm a final-year Software Engineering student at Chulalongkorn University with a focus on full-stack web development.
-                        <br />
-                        I enjoy building scalable, user-centric applications using modern frontend and backend technologies.
-                        <br />
-                        I'm currently seeking full-time opportunities, with availability starting in July 2025.
-                    </h1>
-
-                    <div style={metaContainerStyle}>
-                        <div style={locationContainerStyle}>
-                            <div style={blockStyle}>
-                                <img src={LocationIcon} alt="Location" style={locationIconStyle} />
-                            </div>
-                            
-                            <h1 style={locationStyle}>Bangkok, Thailand</h1>
-                        </div>
-
-                        <div style={locationContainerStyle}>
-                            <div style={blockStyle}>
-                                <img src={AvailableIcon} alt="Available" style={availableIconStyle} />
-                            </div>
-                            
-                            <h1 style={locationStyle}>Available for a new challenge</h1>
-                        </div>
-                    </div>
-                    
-
-                    <div style={iconContainerStyle}>
-                        <img src={IconMap.github.icon} alt="Github" style={iconStyle} onClick={() => IconMap.github.onClick()}/>
-                        <img src={IconMap.linkedin.icon} alt="LinkedIn" style={iconStyle} onClick={() => IconMap.linkedin.onClick()}/>
-                        <img src={IconMap.instagram.icon} alt="Instagram" style={iconStyle} onClick={() => IconMap.instagram.onClick()}/>
-                    </div>
-                </div>
-
-                <div style={rightContainerStyle}>
+           <div style={contentStyle}>
+                <div style={leftContentStyle}>
                     <div style={imageWrapperStyle}>
                         <div style={imageShadowStyle}></div>
-                        <img src="/profile.JPG" alt="Profile" style={imageStyle} />
+                        <img src="/secondProfile.png" alt="Profile" style={imageStyle} />
                     </div>
                 </div>
-            </div>`
+
+                <div style={rightContentStyle}>
+                    <h1 style={titleRightContentStyle}>Curious, Creative, and Always Building</h1>
+                    <h1 style={descriptionRightContentStyle}>
+                        I’m Chanagun Viriyasathapornpong, a software engineering student in my final year at Chulalongkorn University. My passion lies in creating digital solutions that are both functional and beautifully crafted.
+                        <br /><br />
+                        I specialize in fullstack development — combining strong frontend skills with solid backend logic. I enjoy turning designs into clean, responsive interfaces while also architecting the underlying systems that power them.
+                        <br /><br />
+                        My technical skills include modern web technologies like React, TypeScript, JavaScript, and Flutter for mobile UI, as well as backend languages like Golang, Python, and Java. I'm comfortable working with databases like PostgreSQL, MongoDB, and Redis, and enjoy using tools like Docker and Git.
+                        <br /><br />
+                        What I love most about software is the blend of logic and creativity it demands. I’m constantly learning, exploring new frameworks, and finding better ways to build intuitive user experiences.
+                        <br /><br />
+                        I take pride in writing clean, maintainable code and solving problems in efficient, elegant ways. Whether I’m working solo or collaborating with a team, I’m always driven by purpose and curiosity.
+                        <br /><br />
+                        Outside of coding, I enjoy reading about system design, watching dev talks, and contributing to side projects that challenge me in new ways.
+                        <br /><br />
+                        My goal is to keep growing as a fullstack engineer, contribute meaningfully to real-world products, and always stay curious about the tech that powers the world.
+                        </h1>
+                </div>
+            </div>
         </div>
     )
 }

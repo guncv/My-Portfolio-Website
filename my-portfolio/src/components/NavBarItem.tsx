@@ -1,6 +1,6 @@
 import { CSSProperties, useState } from "react";
-import Colors from "../style/color";
-import { useMediaQuery } from "../layout/MediaQueryContext";
+import { useColors } from "../style/color";
+import { useMediaQuery } from "../context/MediaQueryContext";
 interface TopMenuItemProps {
     name: string;
     path: string;
@@ -8,7 +8,7 @@ interface TopMenuItemProps {
 
 const TopMenuItem: React.FC<TopMenuItemProps> = ({name, path}) => {
     const { isMobile } = useMediaQuery();
-
+    const Colors = useColors();
     const isActive = location.pathname === path;
     const [hover, setHover] = useState(false);
 

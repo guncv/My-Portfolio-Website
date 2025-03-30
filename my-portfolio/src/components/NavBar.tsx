@@ -1,14 +1,22 @@
 import React, { CSSProperties, useState } from 'react';
-import Colors from '../style/color';
+import { useColors } from '../style/color';
 import TopMenuItem from './NavBarItem';
-import { useMediaQuery } from '../layout/MediaQueryContext';
-import menuIcon from '../assets/menuIcon.svg';
-import { topMenuItems } from '../util/topmenuItem';
-
+import { useMediaQuery } from '../context/MediaQueryContext';
+import { useIconMap } from '../util/icon';
+import { topMenuItems } from '../util/topMenuItem';
+import { useTheme } from '../context/ThemeContext';
 const Navbar: React.FC = () => {
+    const icons = useIconMap();
+    const Colors = useColors();
     const [hovered, setHovered] = useState(false);
     const { isMobile, isTablet, isDesktop } = useMediaQuery();
     const [menuOpen, setMenuOpen] = useState(false);
+    const { theme,toggleTheme } = useTheme();
+
+    const togglesTheme = () => {
+        console.log("Theme 1:", theme); 
+        toggleTheme();
+    };
 
     const navbar:CSSProperties = {
         display: 'flex',
@@ -86,59 +94,77 @@ const Navbar: React.FC = () => {
         margin: '0.25rem 0',
       };
 
+      const themeModeContainer: CSSProperties = {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+      };
+
+      const themeModeIconStyle: CSSProperties = {
+        width: '28px',
+        height: '28px',
+        cursor: 'pointer',
+      };
+
+      const lineStyle: CSSProperties = {
+        width: '1px',
+        height: '28px',
+        backgroundColor: Colors.TEXT_PRIMARY,
+      };
+
     return (
         <div style={navbar}>
-            {isDesktop && (
-                <div style={logo}>MyPortfolio</div>
-            )}
-
+            <div style={logo}>MyPortfolio</div>
         
-        {(isDesktop || isTablet) && (
-            <div style={navLinks}>
-            {topMenuItems.map((item) => (
-                <TopMenuItem key={item.name} name={item.name} path={item.path} />
-            ))}
+            {(isDesktop) && (
+                <div style={navLinks}>
+                {topMenuItems.map((item) => (
+                    <TopMenuItem key={item.name} name={item.name} path={item.path} />
+                ))}
 
-            {isDesktop && (
-            <a
-                href="/resume.pdf"
-                download="Chanagun_Resume.pdf"
-                style={dynamicButtonStyle}
-                onMouseEnter={() => setHovered(true)}
-                onMouseLeave={() => setHovered(false)}
-            >
-                Download CV
-            </a>
-            )}
-        </div>
-        )}
+                <div style={lineStyle}>
 
-        {isMobile && (
-            <img src={menuIcon} alt="menu" style={menuIconStyle} onClick={() => setMenuOpen(!menuOpen)} />
-        )}
-
-        {menuOpen && isMobile && (
-        <div style={mobileMenu}>
-            {topMenuItems.map((item, index) => (
-            <div key={item.name}>
-                <div style={mobileMenuItemWrapper}>
-                    <TopMenuItem name={item.name} path={item.path} />
                 </div>
-                {index < topMenuItems.length - 1 && <div style={dividerStyle} />}
-            </div>
-            ))}
-        </div>
-        )}
 
-        {(isTablet || isMobile) && (
-            <div
-            style={dynamicButtonStyle}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            >
-            Download CV
+                <div style={themeModeContainer}>
+                    <img 
+                        src={icons.themeMode.icon} 
+                        alt="theme" 
+                        style={themeModeIconStyle} 
+                        onClick={togglesTheme}
+                    />
+                </div>
+
+                {isDesktop && (
+                <a
+                    href="/resume.pdf"
+                    download="Chanagun_Resume.pdf"
+                    style={dynamicButtonStyle}
+                    onMouseEnter={() => setHovered(true)}
+                    onMouseLeave={() => setHovered(false)}
+                >
+                    Download CV
+                </a>
+                )}
             </div>
-        )}
+            )}
+
+            {(isTablet || isMobile )&& (
+            <img src={icons.menu.icon} alt="menu" style={menuIconStyle} onClick={() => setMenuOpen(!menuOpen)} />
+            )}
+
+            {menuOpen && isMobile && (
+                <div style={mobileMenu}>
+                    {topMenuItems.map((item, index) => (
+                    <div key={item.name}>
+                        <div style={mobileMenuItemWrapper}>
+                            <TopMenuItem name={item.name} path={item.path} />
+                        </div>
+                        {index < topMenuItems.length - 1 && <div style={dividerStyle} />}
+                    </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 

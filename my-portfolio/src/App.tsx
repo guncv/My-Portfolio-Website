@@ -1,17 +1,19 @@
 import './App.css'
 import Introduction from './components/Introduction';
 import NavBar from './components/NavBar';
-import Colors from './style/color';
-import { useMediaQuery } from './layout/MediaQueryContext';
+import { useColors } from './style/color';
+import { useMediaQuery } from './context/MediaQueryContext';
 import About from './components/About';
 function App() {
-  const { isMobile } = useMediaQuery();
+  const { isDesktop } = useMediaQuery();
+  const Colors = useColors();
 
   return (
     <div style={{ backgroundColor: Colors.BACKGROUND_PRIMARY }}>
 
       <NavBar/>
-      <div style={{ paddingTop: isMobile ? '65px' : '70px', backgroundColor: Colors.TEXT_PRIMARY }}>
+
+      <div style={{ paddingTop: isDesktop ? '70px' : '65px', backgroundColor: Colors.TEXT_PRIMARY }}>
         <Introduction />
         <About />
       </div>
