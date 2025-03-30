@@ -1,18 +1,22 @@
 import './App.css'
-
+import Introduction from './components/Introduction';
+import NavBar from './components/NavBar';
+import Colors from './style/color';
+import { useMediaQuery } from './layout/MediaQueryContext';
+import About from './components/About';
 function App() {
+  const { isMobile } = useMediaQuery();
 
   return (
-    <>
-     <div className="App" style={{ padding: '2rem' }}>
-      <section id="hero">
-        <h1 style={{ fontSize: '3rem', fontWeight: 600 }}>Hi, I'm [Your Name]</h1>
-        <p style={{ fontSize: '1.25rem', marginTop: '1rem' }}>
-          Welcome to my portfolio!
-        </p>
-      </section>
+    <div style={{ backgroundColor: Colors.BACKGROUND_PRIMARY }}>
+
+      <NavBar/>
+      <div style={{ paddingTop: isMobile ? '65px' : '70px', backgroundColor: Colors.TEXT_PRIMARY }}>
+        <Introduction />
+        <About />
+      </div>
+
     </div>
-    </>
   )
 }
 
