@@ -4,7 +4,6 @@ import TopMenuItem from './NavBarItem';
 import { useMediaQuery } from '../context/MediaQueryContext';
 import { useIconMap } from '../util/icon';
 import { topMenuItems } from '../util/topMenuItem';
-import { useTheme } from '../context/ThemeContext';
 
 const Navbar: React.FC = () => {
     const icons = useIconMap();
@@ -29,13 +28,6 @@ const Navbar: React.FC = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
       }, []);
-
-    const { theme,toggleTheme } = useTheme();
-
-    const togglesTheme = () => {
-        console.log("Theme 1:", theme); 
-        toggleTheme();
-    };
 
     const navbar:CSSProperties = {
         display: 'flex',
@@ -115,18 +107,6 @@ const Navbar: React.FC = () => {
         margin: '0.25rem 0',
       };
 
-      const themeModeContainer: CSSProperties = {
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.5rem',
-      };
-
-      const themeModeIconStyle: CSSProperties = {
-        width: '28px',
-        height: '28px',
-        cursor: 'pointer',
-      };
-
       const lineStyle: CSSProperties = {
         width: '1px',
         height: '28px',
@@ -145,15 +125,6 @@ const Navbar: React.FC = () => {
 
                 <div style={lineStyle}>
 
-                </div>
-
-                <div style={themeModeContainer}>
-                    <img 
-                        src={icons.themeMode.icon} 
-                        alt="theme" 
-                        style={themeModeIconStyle} 
-                        onClick={togglesTheme}
-                    />
                 </div>
 
                 {isDesktop && (

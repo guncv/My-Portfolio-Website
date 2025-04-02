@@ -1,0 +1,42 @@
+const experienceConfig = [
+    {
+        imageSource: "/codefin.png",
+        description: [
+            "Continuing development on a micro-application project using Flutter to deliver a responsive and user-friendly frontend optimized for mobile platforms.",
+            "Leveraging Go (Golang) with gRPC and GraphQL to build scalable, high-performance backend services within a microservices architecture.",
+            "Actively monitored and analyzed logs within OpenShift to identify and address deployment and runtime issues, ensuring greater operational reliability and system performance.",
+            "Developed and maintained comprehensive unit tests for backend services, promoting long-term code maintainability and aligning with test-driven development (TDD) best practices.",
+            "Worked collaboratively with cross-functional teams to iterate on new features and provide real-time support, ensuring smooth development cycles and timely product updates."
+        ],
+        company: 'Codefin Company Limited ',
+        date: 'February 2025 - Present',
+        position: 'Full Stack Developer (Part-Time)',
+    },
+    {
+        imageSource: "/codefin.png",
+        description: [
+            "Worked on a new internal project 2–3 days per week while managing university coursework, demonstrating strong time management and responsibility.",
+            "Developed backend RESTful APIs using Go (Golang) with the Echo framework, ensuring secure and maintainable code structures.",
+            "Created responsive frontends with React and TypeScript, emphasizing usability and performance.",
+            "Designed and implemented Krungsri-LineOA webpages, enabling users to view transaction history and request account statements, enhancing user accessibility and financial transparency.",
+            "Built a Flutter-based micro-app for online trading, optimizing UI for mobile devices to deliver a smooth and intuitive user experience."
+        ],
+        company: 'Codefin Company Limited ',
+        date: 'August – December 2024',
+        position: 'Full Stack Developer (Internship)',
+    },
+    {
+        imageSource: "/wetech.png",
+        description: [
+            "Completed a 2-month internship as a Software Developer, focusing on improving internal operational tools using Glide, a low-code platform.",
+            "Designed intuitive user interfaces and streamlined the admin dashboard to improve workflow efficiency and data accuracy.",
+            "Collaborated with a cross-functional team to gather requirements, implement features, and iterate quickly based on feedback.", 
+            "Gained hands-on experience in low-code development, database design logic, and real-world product lifecycle management.",
+        ],
+        company: 'WE TECH CONSULTING',
+        date: 'June - July 2024',
+        position: 'Software Developer (Internship)',
+    },
+];
+
+export default experienceConfig;
