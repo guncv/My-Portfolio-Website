@@ -14,6 +14,31 @@ import menuIconDark from '../assets/menuIcon_dark.svg';
 import available from '../assets/available.svg';
 import lightMode from '../assets/light_mode.svg';
 import darkMode from '../assets/dark_mode.svg';
+import python from '../assets/python.svg';
+import nextjs from '../assets/nextjs.svg';
+import react from '../assets/react.svg';
+import typescript from '../assets/typescript.svg';
+import javascript from '../assets/javascript.svg';
+import cpp from '../assets/c++.svg';
+import java from '../assets/java.svg';
+import csharp from '../assets/csharp.svg';
+import git from '../assets/git.svg';
+import docker from '../assets/docker.svg';
+import awsDark from '../assets/aws_dark.svg';
+import awsLight from '../assets/aws_light.svg';
+import kubernetes from '../assets/kubernetes.svg';
+import dynamodb from '../assets/dynamodb.svg';
+import grpc from '../assets/grpc.svg';
+import postgresql from '../assets/postgresql.svg';
+import redis from '../assets/redis.svg';
+import graphql from '../assets/graphql.svg';
+import mongodb from '../assets/mongodb.svg';
+import dart from '../assets/dart.svg';
+import flutter from '../assets/flutter.svg';
+import tailwindcss from '../assets/tailwindcss.svg';
+import golang from '../assets/golang.svg';
+import express from '../assets/express.svg';
+import terraform from '../assets/terraform.svg';
 
 const SOCIAL_URLS = {
   instagram: 'https://www.instagram.com/guncv_',
@@ -54,6 +79,78 @@ export const useIconMap = () => {
     themeMode: {
       icon: isLight ? darkMode : lightMode,
       onClick: toggleTheme,
+    },
+    python: {
+      icon: python,
+    },
+    nextjs: {
+      icon: nextjs,
+    },
+    react: {
+      icon: react,
+    },
+    typescript: {
+      icon: typescript,
+    },
+    javascript: {
+      icon: javascript,
+    },
+    cpp: {
+      icon: cpp,
+    },
+    java: {
+      icon: java,
+    },
+    csharp: {
+      icon: csharp,
+    },
+    git: {
+      icon: git,
+    },
+    docker: {
+      icon: docker,
+    },
+    aws: {
+      icon: isLight ? awsLight : awsDark,
+    },
+    kubernetes: {
+      icon: kubernetes,
+    },
+    dynamodb: {
+      icon: dynamodb,
+    },
+    grpc: {
+      icon: grpc,
+    },
+    postgresql: {
+      icon: postgresql,
+    },
+    redis: {
+      icon: redis,
+    },
+    graphql: {
+      icon: graphql,
+    },
+    mongodb: {
+      icon: mongodb,
+    },
+    dart: {
+      icon: dart,
+    },
+    flutter: {
+      icon: flutter,
+    },
+    tailwindcss: {
+      icon: tailwindcss,
+    },
+    golang: {
+      icon: golang,
+    },
+    express: {
+      icon: express,
+    },
+    terraform: {
+      icon: terraform,
     },
   };
 };

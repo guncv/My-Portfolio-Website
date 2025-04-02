@@ -110,7 +110,7 @@ const About = () => {
       }
 
     return (
-        <div style={aboutPageStyle}>
+        <div id="about" style={aboutPageStyle}>
             <TitleContentPage title={"About me"} />
 
            <div style={contentStyle}>

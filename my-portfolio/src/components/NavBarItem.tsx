@@ -9,17 +9,10 @@ interface TopMenuItemProps {
 const TopMenuItem: React.FC<TopMenuItemProps> = ({name, path}) => {
     const { isMobile } = useMediaQuery();
     const Colors = useColors();
-    const isActive = location.pathname === path;
     const [hover, setHover] = useState(false);
 
     const handleHover = () => setHover(!hover);
     
-    const handleNavigate = (path: string) => {
-        if (!isActive) {
-            console.log("path:",path);
-            // safeNavigate(path);
-        }
-    }
 
     const containerStyle: CSSProperties = {
         cursor: "pointer",
@@ -49,14 +42,18 @@ const TopMenuItem: React.FC<TopMenuItemProps> = ({name, path}) => {
         color: Colors.BACKGROUND_PRIMARY, 
         transform: hover ? "translateY(-100%)" : "translateY(0)",
         transition: "transform 0.15s ease-in-out",
+        textDecoration: 'none',
     };
   
     return (
       <div style={containerStyle} onMouseEnter={handleHover} onMouseLeave={handleHover}>
         <div style={textStyle}>{name}</div>
-        <div onClick={() => handleNavigate(path)} style={linkStyle}>
-          {name}
-        </div>
+        <a 
+            href={path} 
+            style={linkStyle}
+        >
+            {name}
+        </a>
       </div>
     );
 }

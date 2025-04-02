@@ -4,13 +4,14 @@ import { useMediaQuery } from "../context/MediaQueryContext";
 
 interface TitleContentPageProps {
     title: string;
+    content?: string;
 }
 
-const TitleContentPage = ({ title }: TitleContentPageProps) => {
-    const { isMobile } = useMediaQuery();
+const TitleContentPage = ({ title , content}: TitleContentPageProps) => {
+    const { isMobile, isTablet } = useMediaQuery();
     const Colors = useColors();
     const titleContainerStyle: CSSProperties = {
-        fontSize: isMobile ? '20px' : '2.5vw',
+        fontSize: isMobile ? '20px' : isTablet ? '2.5vw' : '2vw',
         color: Colors.TEXT_PRIMARY,
         display: 'flex',
         justifyContent: 'center',
@@ -21,16 +22,30 @@ const TitleContentPage = ({ title }: TitleContentPageProps) => {
         color: Colors.TEXT_PRIMARY,
         backgroundColor: Colors.BACKGROUND_TERTIARY,
         borderRadius: '100px',
-        fontSize: isMobile ? '20px' : '1.2vw',
+        fontSize: isMobile ? '20px' : isTablet ? '1.5vw' : '1.2vw',
         fontWeight: 'normal',
         padding: '0.7vw 2vw',
     }
 
-    
+    const contentStyle: CSSProperties = {
+        fontSize: isMobile ? '20px' : isTablet ? '2vw' :  '1.2vw',
+        color: Colors.TEXT_PRIMARY,
+        marginTop: isTablet ? '4vw' : isMobile ? '30px' : '2vw',
+        fontWeight: 'normal',
+        textAlign: 'center',
+    };
     return (
-        <div style={titleContainerStyle}>
-            <div style={titleStyle}>{title}</div>
-        </div>
+        <>
+            <div style={titleContainerStyle}>
+                <div style={titleStyle}>{title}</div>
+            </div>
+            
+            {content && (
+                <div style={contentStyle}>
+                    {content}
+                </div>
+            )}
+        </>
     )
 }   
 

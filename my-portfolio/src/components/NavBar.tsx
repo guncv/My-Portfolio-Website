@@ -1,16 +1,35 @@
-import React, { CSSProperties, useState } from 'react';
+import React, { CSSProperties, useRef, useState, useEffect } from 'react';
 import { useColors } from '../style/color';
 import TopMenuItem from './NavBarItem';
 import { useMediaQuery } from '../context/MediaQueryContext';
 import { useIconMap } from '../util/icon';
 import { topMenuItems } from '../util/topMenuItem';
 import { useTheme } from '../context/ThemeContext';
+
 const Navbar: React.FC = () => {
     const icons = useIconMap();
     const Colors = useColors();
     const [hovered, setHovered] = useState(false);
     const { isMobile, isTablet, isDesktop } = useMediaQuery();
     const [menuOpen, setMenuOpen] = useState(false);
+    const [scrollDir, setScrollDir] = useState<'up' | 'down'>('up');
+    const lastScrollY = useRef(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+          const currentScrollY = window.scrollY;
+          if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+            setScrollDir('down');
+          } else {
+            setScrollDir('up');
+          }
+          lastScrollY.current = currentScrollY;
+        };
+      
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+      }, []);
+
     const { theme,toggleTheme } = useTheme();
 
     const togglesTheme = () => {
@@ -28,6 +47,8 @@ const Navbar: React.FC = () => {
         top: 0,
         width: '100%',
         zIndex: 1000,
+        transform: scrollDir === 'down' ? 'translateY(-100%)' : 'translateY(0)',
+        transition: 'transform 0.3s ease-in-out',
     }
 
     const button:CSSProperties = {
@@ -49,7 +70,7 @@ const Navbar: React.FC = () => {
     const navLinks:CSSProperties = {
         listStyle: 'none',
         display: 'flex',
-        gap: '2rem',
+        gap: 'clamp(10px, 1.5rem, 2rem)',
         alignItems: 'center',
         margin: 0,
         padding: 0,
