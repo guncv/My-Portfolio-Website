@@ -1,3 +1,8 @@
+const contactConfig = {
+    email: "chanagun.vir@gmail.com",
+    phone: "0626274882",
+}
+
 const experienceConfig = [
     {
         imageSource: "/codefin.png",
@@ -40,3 +45,4 @@ const experienceConfig = [
 ];
 
 export default experienceConfig;
+export { contactConfig };

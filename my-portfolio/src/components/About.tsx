@@ -2,18 +2,12 @@ import { CSSProperties } from "react";
 import { useColors } from "../style/color";
 import { useMediaQuery } from "../context/MediaQueryContext";
 import TitleContentPage from "./TitleContentPage";
-
+import PageStyle from "../style/global";
 const About = () => {
     const Colors = useColors();
     const { isMobile, isTablet, isDesktop } = useMediaQuery();
 
-    const aboutPageStyle: CSSProperties = {
-        width: '100%',
-        padding: isMobile ? '40px' : '6vw 2rem',
-        fontWeight: 'normal',
-        backgroundColor: Colors.BACKGROUND_SECONDARY,
-        color: Colors.TEXT_PRIMARY,
-    }
+    const aboutPageStyle: CSSProperties = PageStyle({ backgroundColorType: 1 });
 
     const contentStyle: CSSProperties = {
         width: '100%',

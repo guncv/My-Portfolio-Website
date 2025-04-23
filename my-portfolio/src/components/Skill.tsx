@@ -4,6 +4,7 @@ import { useMediaQuery } from "../context/MediaQueryContext";
 import TitleContentPage from "./TitleContentPage";
 import { useIconMap } from "../util/icon";
 import { motion } from "framer-motion";
+import PageStyle from "../style/global";
 
 const Skill = () => {
     const Colors = useColors();
@@ -28,24 +29,7 @@ const Skill = () => {
         amount: 0.3,
     };
 
-    const skillPageStyle: CSSProperties = {
-        width: '100%',
-        padding: isMobile ? '40px' : '6vw 2rem',
-        fontWeight: 'normal',
-        backgroundColor: Colors.BACKGROUND_PRIMARY,
-        color: Colors.TEXT_PRIMARY,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    };
-
-        const skillContentStyle: CSSProperties = {
-            fontSize: isMobile ? '20px' : isTablet ? '2vw' :  '1.2vw',
-            color: Colors.TEXT_PRIMARY,
-            marginTop: isTablet ? '4vw' : isMobile ? '30px' : '2vw',
-            fontWeight: 'normal',
-            textAlign: 'center',
-        };
+    const skillPageStyle: CSSProperties = PageStyle({ backgroundColorType: 2 });
 
     const skillListContainer: CSSProperties = {
         marginTop: isMobile ? '40px' : isTablet ? '7vw' : '3vw',

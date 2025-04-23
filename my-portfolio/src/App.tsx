@@ -6,7 +6,8 @@ import { useMediaQuery } from './context/MediaQueryContext';
 import About from './components/About';
 import Skill from './components/Skill';
 import Experience from './components/Experience';
-
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 function App() {
   const { isDesktop } = useMediaQuery();
   const Colors = useColors();
@@ -21,6 +22,8 @@ function App() {
         <About/>
         <Skill />
         <Experience />
+        <Contact />
+        <Footer />
       </div>
 
     </div>

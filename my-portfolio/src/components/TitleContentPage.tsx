@@ -4,7 +4,7 @@ import { useMediaQuery } from "../context/MediaQueryContext";
 
 interface TitleContentPageProps {
     title: string;
-    content?: string;
+    content?: React.ReactNode;
 }
 
 const TitleContentPage = ({ title , content}: TitleContentPageProps) => {

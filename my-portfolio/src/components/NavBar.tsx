@@ -28,6 +28,24 @@ const Navbar: React.FC = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
       }, []);
+    
+    useEffect(() => {
+        if (menuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    }, [menuOpen]);
+
+    useEffect(() => {
+        if (isDesktop) {
+            setMenuOpen(false);
+        }
+    }, [isDesktop]);
+
+    const handleBackdropClick = () => {
+        setMenuOpen(false);
+    };
 
     const navbar:CSSProperties = {
         display: 'flex',
@@ -73,18 +91,6 @@ const Navbar: React.FC = () => {
         height: '28px',
         cursor: 'pointer',
     };
-
-    const mobileMenu: CSSProperties = {
-        position: 'absolute',
-        top: '50px',
-        left: '1rem',
-        backgroundColor: Colors.TEXT_PRIMARY,
-        border: `1px solid ${Colors.BACKGROUND_PRIMARY}`, 
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.5rem',
-        zIndex: 999,
-      };   
       
     const mobileMenuItemWrapper: CSSProperties = {
         display: 'flex',
@@ -98,20 +104,71 @@ const Navbar: React.FC = () => {
         color: hovered ? Colors.TEXT_PRIMARY : Colors.BACKGROUND_PRIMARY,
         transition: 'all 0.3s ease',
         textDecoration: 'none',
+        marginLeft: '10px',
+        fontSize: isMobile ? '1rem' : '1rem',
     };
       
-      const dividerStyle: CSSProperties = {
+    const dividerStyle: CSSProperties = {
         height: '1px',
         backgroundColor: Colors.BACKGROUND_PRIMARY,
         opacity: 0.3,
         margin: '0.25rem 0',
       };
 
-      const lineStyle: CSSProperties = {
+    const horizontalLineStyle: CSSProperties = {
+        width: '100%',
+        height: '1px',
+        backgroundColor: Colors.TEXT_PRIMARY,
+        opacity: 0.5,
+        marginLeft: '8px',
+        margin: '10px 0',
+    }
+
+    const verticalLineStyle: CSSProperties = {
         width: '1px',
         height: '28px',
         backgroundColor: Colors.TEXT_PRIMARY,
       };
+    
+      const modalBackdrop: CSSProperties = {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        zIndex: 998,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backdropFilter: 'blur(3px)'
+    };
+
+    const modalStyle: CSSProperties = {
+        position: isTablet ? 'absolute' : 'fixed',
+        top: isMobile ? '0px' : '10px',
+        right: isMobile ? '0px' : '10px',
+        backgroundColor: Colors.BACKGROUND_SECONDARY,
+        padding: isMobile ? '30px 40px 20px 40px' : '25px 30px 25px 20px',
+        borderRadius: '8px',
+        width: isMobile ? '100vw' : '50vw',
+        zIndex: 10,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'start',
+        gap: isMobile ? '20px' : '13px',
+        maxWidth: isMobile ? '100vw' : '350px',
+    };
+
+    const closeButtonStyle: CSSProperties = {
+        position: 'absolute',
+        top: isMobile ? '24px' : '15px',
+        right: isMobile ? '30px' : '20px',
+        fontSize: '30px',
+        fontWeight: 'normal',
+        cursor: 'pointer',
+        color: Colors.TEXT_PRIMARY,
+    };
 
     return (
         <div style={navbar}>
@@ -120,16 +177,16 @@ const Navbar: React.FC = () => {
             {(isDesktop) && (
                 <div style={navLinks}>
                 {topMenuItems.map((item) => (
-                    <TopMenuItem key={item.name} name={item.name} path={item.path} />
+                    <TopMenuItem key={item.name} name={item.name} path={item.path} setMenuOpen={setMenuOpen}/>
                 ))}
 
-                <div style={lineStyle}>
+                <div style={verticalLineStyle}>
 
                 </div>
 
                 {isDesktop && (
                 <a
-                    href="/resume.pdf"
+                    href="/resume_version_2.pdf"
                     download="Chanagun_Resume.pdf"
                     style={dynamicButtonStyle}
                     onMouseEnter={() => setHovered(true)}
@@ -141,20 +198,43 @@ const Navbar: React.FC = () => {
             </div>
             )}
 
-            {(isTablet || isMobile )&& (
+            {(isTablet || isMobile )&& (    
             <img src={icons.menu.icon} alt="menu" style={menuIconStyle} onClick={() => setMenuOpen(!menuOpen)} />
             )}
 
-            {menuOpen && isMobile && (
-                <div style={mobileMenu}>
-                    {topMenuItems.map((item, index) => (
-                    <div key={item.name}>
-                        <div style={mobileMenuItemWrapper}>
-                            <TopMenuItem name={item.name} path={item.path} />
-                        </div>
-                        {index < topMenuItems.length - 1 && <div style={dividerStyle} />}
+            {menuOpen && (isTablet || isMobile) && (
+                    <div style={modalBackdrop} onClick={handleBackdropClick}>
+                        <div style={modalStyle} onClick={(e) => e.stopPropagation()}>
+                            <span
+                                style={closeButtonStyle}
+                                onClick={() => setMenuOpen(false)} 
+                            >
+                                &times; 
+                            </span>
+
+                            {topMenuItems.map((item, index) => (
+                                <div key={item.name}>
+                                    <div style={mobileMenuItemWrapper}>
+                                        <TopMenuItem name={item.name} path={item.path} setMenuOpen={setMenuOpen}/>
+                                    </div>
+                                    {index < topMenuItems.length - 1 && <div style={dividerStyle} />}
+                                </div>
+                            ))}
+
+                            <hr style={horizontalLineStyle} />
+
+                            <div style={{margin: '20px 0'}}>
+                                <a
+                                    href="/resume_version_2.pdf"
+                                    download="Chanagun_Resume.pdf"
+                                    style={dynamicButtonStyle}
+                                    onMouseEnter={() => setHovered(true)}
+                                    onMouseLeave={() => setHovered(false)}
+                                >
+                                    Download CV
+                                </a>
+                            </div>
                     </div>
-                    ))}
                 </div>
             )}
         </div>

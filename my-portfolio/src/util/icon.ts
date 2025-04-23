@@ -39,6 +39,9 @@ import tailwindcss from '../assets/tailwindcss.svg';
 import golang from '../assets/golang.svg';
 import express from '../assets/express.svg';
 import terraform from '../assets/terraform.svg';
+import email from '../assets/email.svg';
+import phone from '../assets/phone.svg';
+import duplicate from '../assets/duplicate.svg';
 
 const SOCIAL_URLS = {
   instagram: 'https://www.instagram.com/guncv_',
@@ -151,6 +154,15 @@ export const useIconMap = () => {
     },
     terraform: {
       icon: terraform,
+    },
+    email: {
+      icon: email,
+    },
+    phone: {
+      icon: phone,
+    },
+    duplicate: {
+      icon: duplicate,
     },
   };
 };

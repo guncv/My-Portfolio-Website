@@ -3,18 +3,12 @@ import TitleContentPage from "./TitleContentPage";
 import { useMediaQuery } from "../context/MediaQueryContext";
 import { useColors } from "../style/color";
 import experienceConfig from "../util/config";
-
+import PageStyle from "../style/global";
 const Experience = () => {
     const { isMobile, isTablet, isDesktop } = useMediaQuery();
     const Colors = useColors();
 
-    const experiencePageStyle: CSSProperties = {
-        width: '100%',
-        padding: isMobile ? '40px' : '6vw 2rem',
-        fontWeight: 'normal',
-        backgroundColor: Colors.BACKGROUND_SECONDARY,
-        color: Colors.TEXT_PRIMARY,
-    }
+    const experiencePageStyle: CSSProperties = PageStyle({ backgroundColorType: 1 });
 
     const experienceContentStyle: CSSProperties = {
         fontSize: isMobile ? '15px' : isTablet ? '2vw' :  '1.2vw',
