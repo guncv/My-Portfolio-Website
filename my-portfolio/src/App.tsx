@@ -4,8 +4,8 @@ import NavBar from './components/NavBar';
 import { useColors } from './style/color';
 import { useMediaQuery } from './context/MediaQueryContext';
 import About from './components/About';
-import Skill from './components/Skill';
 import Experience from './components/Experience';
+import Skill from './components/Skill';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 function App() {
@@ -20,8 +20,8 @@ function App() {
       <div style={{ paddingTop: isDesktop ? '70px' : '65px', backgroundColor: Colors.TEXT_PRIMARY }}>
         <Introduction />
         <About/>
-        <Skill />
         <Experience />
+        <Skill />
         <Contact />
         <Footer />
       </div>

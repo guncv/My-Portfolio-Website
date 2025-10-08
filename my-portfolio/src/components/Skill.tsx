@@ -29,7 +29,7 @@ const Skill = () => {
         amount: 0.3,
     };
 
-    const skillPageStyle: CSSProperties = PageStyle({ backgroundColorType: 2 });
+    const skillPageStyle: CSSProperties = PageStyle({ backgroundColorType: 1 });
 
     const skillListContainer: CSSProperties = {
         marginTop: isMobile ? '40px' : isTablet ? '7vw' : '3vw',

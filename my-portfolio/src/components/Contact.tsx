@@ -1,4 +1,4 @@
-import React, { CSSProperties, useState } from "react";
+import { CSSProperties, useState } from "react";
 import TitleContentPage from "./TitleContentPage";
 import PageStyle from "../style/global";
 import { useIconMap } from "../util/icon";
@@ -14,7 +14,7 @@ const Contact = () => {
         phone: false,
     });
 
-    const contactPageStyle: CSSProperties = PageStyle({ backgroundColorType: 1 });
+    const contactPageStyle: CSSProperties = PageStyle({ backgroundColorType: 2 });
 
     const contactContainerStyle: CSSProperties = {
         display: 'flex',
