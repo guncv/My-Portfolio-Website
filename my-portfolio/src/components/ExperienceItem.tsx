@@ -360,12 +360,10 @@ const ExperienceItem = ({ experience }: ExperienceItemProps) => {
     const [selectedPosition, setSelectedPosition] = useState<Position | null>(null);
 
     const handleCardClick = () => {
-        // If company has only one position, open it directly
         if (experience.positions.length === 1) {
             setSelectedPosition(experience.positions[0]);
             setIsModalOpen(true);
         } else {
-            // For multiple positions, show dropdown
             setIsDropdownOpen(true);
         }
     };
@@ -433,7 +431,7 @@ const ExperienceItem = ({ experience }: ExperienceItemProps) => {
     };
 
     const companyNameStyle: CSSProperties = {
-        fontSize: isMobile ? '18px' : isTablet ? '2vw' : '1.8vw',
+        fontSize: isMobile ? '16px' : isTablet ? '2vw' : '1.5vw',
         fontWeight: 'bold',
         margin: 0,
     };
@@ -513,8 +511,8 @@ const ExperienceItem = ({ experience }: ExperienceItemProps) => {
                 onMouseEnter={() => setOnHover(true)} 
                 onMouseLeave={() => setOnHover(false)}
                 onClick={handleCardClick}
-            >   
-                {/* Company Header */}
+            >
+
                 <div style={companyHeaderStyle}>
                     <div style={companyLeftStyle}>
                         <img src={experience.imageSource} alt={experience.company} style={companyImageStyle} />
@@ -538,7 +536,6 @@ const ExperienceItem = ({ experience }: ExperienceItemProps) => {
                     )}
                 </div>
 
-                {/* Positions */}
                 <div style={positionsContainerStyle}>
                     {experience.positions.map((position, index) => (
                         <div 
@@ -548,7 +545,7 @@ const ExperienceItem = ({ experience }: ExperienceItemProps) => {
                         >
                             <div style={positionLeftStyle}>
                                 <h3 style={positionTitleStyle}>{position.position}</h3>
-                                <p style={positionDateStyle}>{position.date}</p>
+                                {!isMobile && <p style={positionDateStyle}>{position.date}</p>}
                                 {position.intro && (
                                     <p style={positionIntroStyle}>{position.intro}</p>
                                 )}

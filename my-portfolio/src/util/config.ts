@@ -7,6 +7,25 @@ const contactConfig = {
 
 const experienceConfig: Experience[] = [
     {
+        imageSource: "/chula.png",
+        company: 'Chulalongkorn University',
+        companyIntro: 'Thailand\'s leading university where I serve as a Teaching Assistant for advanced computer engineering courses.',
+        positions: [
+            {
+                description: [
+                    "Assisted official Teaching Assistants during lab and lecture sessions for Software-Defined Systems I (2110506).",
+                    "Helped students understand core concepts including containers, Docker, Kubernetes, cloud computing, and DevOps practices.",
+                    "Supported assignment reviews and guided students on practical exercises covering AWS, SDN (ONOS, Mininet), and edge computing technologies.",
+                    "Volunteered based on academic performance and demonstrated interest in system design and distributed computing.",
+                    "Facilitated hands-on learning experiences and helped students debug complex infrastructure and networking assignments."
+                ],
+                date: 'August – November 2025',
+                position: 'Teaching Assistant (Support Role)',
+                intro: 'Volunteered as TA helper for advanced systems course. Guided students in cloud infrastructure and DevOps labs.',
+            }
+        ]
+    },
+    {
         imageSource: "/codefin.png",
         company: 'Codefin Company Limited',
         companyIntro: 'Leading fintech company specializing in digital banking solutions and microservices architecture.',
