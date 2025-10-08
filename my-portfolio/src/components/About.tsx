@@ -94,6 +94,7 @@ const About = () => {
         fontWeight: 'normal',
         marginBottom: isMobile ? '20px' : '10px',
         marginTop: isMobile ? '0px' : '-10px',
+        textAlign: isMobile ? 'center' : 'start',
       }
 
       const descriptionRightContentStyle: CSSProperties = {
