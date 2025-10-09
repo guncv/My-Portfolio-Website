@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import { CSSProperties, useState } from "react";
 import { useMediaQuery } from "../context/MediaQueryContext";
 import TitleContentPage from "./TitleContentPage";
 import PageStyle from "../style/global";
@@ -13,6 +13,7 @@ const Certificates = () => {
     const Colors = useColors();
     const { theme } = useTheme();
     const iconMap = useIconMap();
+    const [expandedSkills, setExpandedSkills] = useState<Record<number, boolean>>({});
 
     const certificatesPageStyle: CSSProperties = PageStyle({ backgroundColorType: 1 });
 
@@ -32,91 +33,95 @@ const Certificates = () => {
         gridTemplateColumns: isMobile 
             ? '1fr' 
             : isTablet 
-                ? 'repeat(2, 1fr)' 
+                ? '1fr' 
                 : 'repeat(auto-fit, minmax(350px, 1fr))',
         gap: isMobile ? '25px' : isTablet ? '30px' : '35px',
         width: '100%',
-        maxWidth: '1200px',
+        maxWidth: isTablet ? '600px' : '1200px',
+        justifyItems: 'center',
     };
 
     const certificateCardStyle: CSSProperties = {
         backgroundColor: Colors.BACKGROUND_SECONDARY,
-        borderRadius: '16px',
-        padding: isMobile ? '20px' : '25px',
+        borderRadius: isMobile ? '14px' : '16px',
+        padding: isMobile ? '16px' : '20px',
         boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
         border: `2px solid ${Colors.BACKGROUND_TERTIARY}`,
         transition: 'all 0.3s ease',
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
+        width: isMobile ? '100%' : '500px',
     };
 
     const certificateHeaderStyle: CSSProperties = {
         display: 'flex',
-        alignItems: 'flex-start',
-        gap: isMobile ? '15px' : '18px',
-        marginBottom: '15px',
+        alignItems: isMobile ? 'center' : 'flex-start',
+        flexDirection: isMobile ? 'column' : 'row',
+        gap: isMobile ? '12px' : '16px',
+        marginBottom: '12px',
     };
 
     const issuerLogoStyle: CSSProperties = {
-        width: isMobile ? '50px' : '55px',
-        height: isMobile ? '50px' : '55px',
-        borderRadius: '10px',
+        width: isMobile ? '60px' : '50px',
+        height: isMobile ? '60px' : '50px',
+        borderRadius: isMobile ? '8px' : '8px',
         objectFit: 'cover',
         backgroundColor: Colors.BACKGROUND_TERTIARY,
-        padding: '6px',
+        padding: isMobile ? '4px' : '4px',
         flexShrink: 0,
     };
 
     const certificateInfoStyle: CSSProperties = {
         flex: 1,
+        textAlign: isMobile ? 'center' : 'left',
     };
 
     const certificateTitleStyle: CSSProperties = {
-        fontSize: isMobile ? '16px' : isTablet ? '17px' : '18px',
+        fontSize: isMobile ? '15px' : isTablet ? '16px' : '17px',
         fontWeight: 'bold',
         color: Colors.TEXT_PRIMARY,
-        margin: '0 0 5px 0',
+        margin: '0 0 3px 0',
         lineHeight: '1.3',
     };
 
     const issuerStyle: CSSProperties = {
-        fontSize: isMobile ? '13px' : '14px',
+        fontSize: isMobile ? '12px' : '13px',
         fontWeight: '600',
         color: Colors.TEXT_PRIMARY,
         opacity: 0.8,
-        margin: '0 0 8px 0',
+        margin: '0 0 4px 0',
     };
 
     const dateStyle: CSSProperties = {
-        fontSize: isMobile ? '12px' : '13px',
+        fontSize: isMobile ? '11px' : '12px',
         color: Colors.TEXT_PRIMARY,
         opacity: 0.7,
         fontWeight: '500',
     };
 
     const descriptionStyle: CSSProperties = {
-        fontSize: isMobile ? '13px' : '14px',
-        lineHeight: '1.5',
+        fontSize: isMobile ? '12px' : '13px',
+        lineHeight: '1.4',
         color: Colors.TEXT_PRIMARY,
         opacity: 0.85,
-        margin: '0 0 15px 0',
+        margin: '0 0 12px 0',
         flex: 1,
     };
 
     const skillsContainerStyle: CSSProperties = {
         display: 'flex',
         flexWrap: 'wrap',
-        gap: '6px',
-        marginBottom: '15px',
+        gap: '5px',
+        marginBottom: '12px',
     };
 
     const skillBadgeStyle: CSSProperties = {
         backgroundColor: Colors.BACKGROUND_TERTIARY,
         color: Colors.TEXT_PRIMARY,
-        padding: isMobile ? '3px 8px' : '4px 10px',
-        borderRadius: '12px',
-        fontSize: isMobile ? '10px' : '11px',
+        padding: isMobile ? '2px 6px' : '3px 8px',
+        borderRadius: '10px',
+        fontSize: isMobile ? '9px' : '10px',
         fontWeight: '500',
         transition: 'all 0.3s ease',
     };
@@ -126,12 +131,12 @@ const Certificates = () => {
         alignItems: 'center',
         justifyContent: 'space-between',
         marginTop: 'auto',
-        paddingTop: '15px',
+        paddingTop: '12px',
         borderTop: `1px solid ${Colors.BACKGROUND_TERTIARY}`,
     };
 
     const credentialIdStyle: CSSProperties = {
-        fontSize: isMobile ? '11px' : '12px',
+        fontSize: isMobile ? '10px' : '11px',
         color: Colors.TEXT_PRIMARY,
         opacity: 0.6,
         fontFamily: 'monospace',
@@ -140,13 +145,13 @@ const Certificates = () => {
     const verifyButtonStyle: CSSProperties = {
         display: 'flex',
         alignItems: 'center',
-        gap: '6px',
-        padding: isMobile ? '6px 12px' : '7px 14px',
-        borderRadius: '8px',
+        gap: '5px',
+        padding: isMobile ? '5px 10px' : '6px 12px',
+        borderRadius: '6px',
         backgroundColor: 'transparent',
         border: `1px solid ${Colors.TEXT_PRIMARY}`,
         color: Colors.TEXT_PRIMARY,
-        fontSize: isMobile ? '11px' : '12px',
+        fontSize: isMobile ? '10px' : '11px',
         fontWeight: '600',
         textDecoration: 'none',
         transition: 'all 0.3s ease',
@@ -154,8 +159,15 @@ const Certificates = () => {
     };
 
     const iconStyle: CSSProperties = {
-        width: '14px',
-        height: '14px',
+        width: '12px',
+        height: '12px',
+    };
+
+    const toggleSkills = (index: number) => {
+        setExpandedSkills(prev => ({
+            ...prev,
+            [index]: !prev[index]
+        }));
     };
 
     const decorativeElementStyle: CSSProperties = {
@@ -185,7 +197,6 @@ const Certificates = () => {
 
     return (
         <div id="certificates" style={{ ...certificatesPageStyle, position: 'relative', overflow: 'hidden' }}>
-            {/* Decorative background elements */}
             <div style={topLeftDecorStyle} />
             <div style={bottomRightDecorStyle} />
 
@@ -240,28 +251,37 @@ const Certificates = () => {
                             {/* Skills */}
                             {certificate.skills && certificate.skills.length > 0 && (
                                 <div style={skillsContainerStyle}>
-                                    {certificate.skills.slice(0, 4).map((skill, idx) => (
+                                    {(expandedSkills[index] 
+                                        ? certificate.skills 
+                                        : certificate.skills.slice(0, 4)
+                                    ).map((skill, idx) => (
                                         <motion.span
                                             key={idx}
                                             style={skillBadgeStyle}
-                                            whileHover={{
-                                                backgroundColor: Colors.TEXT_PRIMARY,
-                                                color: Colors.BACKGROUND_SECONDARY,
-                                                scale: 1.05,
-                                            }}
                                         >
                                             {skill}
                                         </motion.span>
                                     ))}
                                     {certificate.skills.length > 4 && (
-                                        <span style={{...skillBadgeStyle, opacity: 0.6}}>
-                                            +{certificate.skills.length - 4}
-                                        </span>
+                                        <motion.span 
+                                            style={{
+                                                ...skillBadgeStyle, 
+                                                cursor: 'pointer',
+                                                opacity: 0.7,
+                                                fontWeight: '600'
+                                            }}
+                                            onClick={() => toggleSkills(index)}
+                                            whileTap={{ scale: 0.95 }}
+                                        >
+                                            {expandedSkills[index] 
+                                                ? 'Show less' 
+                                                : `+${certificate.skills.length - 4}`
+                                            }
+                                        </motion.span>
                                     )}
                                 </div>
                             )}
 
-                            {/* Credential Footer */}
                             <div style={credentialContainerStyle}>
                                 {certificate.credentialId && (
                                     <span style={credentialIdStyle}>
@@ -274,15 +294,10 @@ const Certificates = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         style={verifyButtonStyle}
-                                        whileHover={{
-                                            backgroundColor: Colors.TEXT_PRIMARY,
-                                            color: Colors.BACKGROUND_SECONDARY,
-                                            scale: 1.05,
-                                        }}
                                         onClick={(e) => e.stopPropagation()}
                                     >
                                         <img 
-                                            src={theme === 'dark' ? iconMap.diagonalArrowLight.icon : iconMap.diagonalArrowDark.icon} 
+                                            src={theme === 'dark' ? iconMap.diagonalArrowDark.icon : iconMap.diagonalArrowLight.icon} 
                                             alt="Verify" 
                                             style={iconStyle}
                                         />

@@ -1,4 +1,5 @@
 import { Experience, Project, Education, Certificate } from "./type";
+import awsDark from "../assets/aws_dark.svg";
 
 const contactConfig = {
     email: "chanagun.vir@gmail.com",
@@ -9,7 +10,7 @@ const projectsConfig: Project[] = [
     {
         title: "E-Commerce Platform",
         description: "A full-stack e-commerce platform with real-time inventory management, payment integration, and admin dashboard. Built with microservices architecture for scalability.",
-        imageSource: ["/profile.jpg", "/secondProfile.png", "/chula.png"], // Multiple images - will show carousel
+        imageSource: ["/profile.jpg", "/secondProfile.png", "/chula.png"],
         technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Docker"],
         githubLink: "https://github.com/yourusername/ecommerce",
         liveLink: "https://ecommerce-demo.com",
@@ -27,7 +28,7 @@ const projectsConfig: Project[] = [
     {
         title: "AI Chat Assistant",
         description: "Intelligent chatbot powered by advanced language models with context-aware responses and multi-language support.",
-        imageSource: "/profile.jpg", // Replace with actual project image
+        imageSource: "/profile.jpg",
         technologies: ["Python", "React", "OpenAI", "Redis", "AWS"],
         githubLink: "https://github.com/yourusername/ai-chat",
         featured: false,
@@ -35,7 +36,7 @@ const projectsConfig: Project[] = [
     {
         title: "Portfolio Website",
         description: "Modern, responsive portfolio website with dark mode, smooth animations, and optimized performance.",
-        imageSource: "/profile.jpg", // Replace with actual project image
+        imageSource: "/profile.jpg",
         technologies: ["React", "TypeScript", "Vite", "Framer Motion"],
         githubLink: "https://github.com/yourusername/portfolio",
         liveLink: "https://yourportfolio.com",
@@ -47,7 +48,6 @@ const experienceConfig: Experience[] = [
     {
         imageSource: "/chula.png",
         company: 'Chulalongkorn University',
-        companyIntro: 'Thailand\'s leading university where I serve as a Teaching Assistant for advanced computer engineering courses.',
         positions: [
             {
                 description: [
@@ -57,8 +57,8 @@ const experienceConfig: Experience[] = [
                     "Volunteered based on academic performance and demonstrated interest in system design and distributed computing.",
                     "Facilitated hands-on learning experiences and helped students debug complex infrastructure and networking assignments."
                 ],
-                date: 'August – November 2025',
-                position: 'Teaching Assistant (Support Role)',
+                date: 'September 2025 - Present',
+                position: 'TA Assistant - Software Define System',
                 intro: 'Volunteered as TA helper for advanced systems course. Guided students in cloud infrastructure and DevOps labs.',
             }
         ]
@@ -66,7 +66,6 @@ const experienceConfig: Experience[] = [
     {
         imageSource: "/codefin.png",
         company: 'Codefin Company Limited',
-        companyIntro: 'Leading fintech company specializing in digital banking solutions and microservices architecture.',
         positions: [
             {
                 description: [
@@ -76,8 +75,8 @@ const experienceConfig: Experience[] = [
                     "Developed and maintained comprehensive unit tests for backend services, promoting long-term code maintainability and aligning with test-driven development (TDD) best practices.",
                     "Worked collaboratively with cross-functional teams to iterate on new features and provide real-time support, ensuring smooth development cycles and timely product updates."
                 ],
-                date: 'February 2025 - Present',
-                position: 'Full Stack Developer (Part-Time)',
+                date: 'January - April 2025',
+                position: 'Software Engineer - Part-Time',
                 intro: 'Part-time role while completing university. Focused on microservices and Flutter development.',
             },
             {
@@ -88,8 +87,8 @@ const experienceConfig: Experience[] = [
                     "Designed and implemented Krungsri-LineOA webpages, enabling users to view transaction history and request account statements, enhancing user accessibility and financial transparency.",
                     "Built a Flutter-based micro-app for online trading, optimizing UI for mobile devices to deliver a smooth and intuitive user experience."
                 ],
-                date: 'August – December 2024',
-                position: 'Full Stack Developer (Internship)',
+                date: 'August - December 2024',
+                position: 'Software Engineer - Internship',
                 intro: 'Started as intern, learning modern web development while balancing university studies.',
             }
         ]
@@ -97,7 +96,6 @@ const experienceConfig: Experience[] = [
     {
         imageSource: "/wetech.png",
         company: 'WE TECH CONSULTING',
-        companyIntro: 'Technology consulting firm focused on digital transformation and operational efficiency.',
         positions: [
             {
                 description: [
@@ -107,7 +105,7 @@ const experienceConfig: Experience[] = [
                     "Gained hands-on experience in low-code development, database design logic, and real-world product lifecycle management.",
                 ],
                 date: 'June - July 2024',
-                position: 'Software Developer (Internship)',
+                position: 'Software Developer - Internship',
                 intro: 'First professional experience in software development using low-code platforms.',
             }
         ]
@@ -120,58 +118,48 @@ const educationConfig: Education[] = [
         institution: "Chulalongkorn University",
         degree: "Bachelor of Engineering",
         field: "Computer Engineering",
-        date: "2022 - Present",
-        gpa: "3.85/4.00",
-        description: "Pursuing Computer Engineering with focus on software development, system design, and emerging technologies.",
+        date: "Aug 2021 – July 2025",
+        gpa: "3.26/4.00",
+        description: "Studied Computer Engineering with a focus on software development, cloud systems, and applied artificial intelligence.",
         achievements: [
-            "Dean's List for Academic Excellence",
-            "Teaching Assistant for Software-Defined Systems I",
-            "Active member of Computer Engineering Student Association"
+            "Second Class Honors",
         ],
         coursework: [
             "Software Engineering",
-            "Data Structures and Algorithms", 
+            "Data Structures and Algorithms",
             "Computer Networks",
             "Database Systems",
+            "Software Architecture",
             "Software-Defined Systems",
-            "Machine Learning",
             "Cloud Computing",
-            "Mobile Application Development"
+            "Artificial Intelligence"
         ]
     }
 ];
 
 const certificatesConfig: Certificate[] = [
     {
-        imageSource: "/chula.png",
-        title: "AWS Cloud Practitioner",
+        imageSource: awsDark,
+        title: "AWS Academy Graduate - Cloud Architecting",
         issuer: "Amazon Web Services",
-        date: "2024",
-        credentialId: "AWS-CP-2024-001",
-        credentialUrl: "https://aws.amazon.com/verification",
-        description: "Fundamental understanding of AWS Cloud concepts, services, and pricing.",
-        skills: ["AWS Cloud", "Cloud Computing", "AWS Services", "Cloud Security"]
+        date: "2025",
+        credentialUrl: "https://www.credly.com/badges/88ee09b7-3246-4902-b5a3-8f65b38c74a9/linked_in_profile",
+        description: "Completed AWS Academy Cloud Architecting course focusing on designing scalable, secure, and cost-efficient cloud infrastructure on AWS. Gained hands-on experience with VPC design, compute and storage services (EC2, S3, RDS, EFS), IAM policies, and high-availability patterns across distributed architectures.",
+        skills: [
+            "AWS Cloud",
+            "Cloud Computing",
+            "Cloud Security",
+            "Amazon EC2",
+            "Amazon S3",
+            "Amazon RDS",
+            "Amazon VPC",
+            "Amazon SQS",
+            "Amazon CloudFront",
+            "Amazon Cognito",
+            "Amazon EFS",
+            "AWS IAM"
+        ]
     },
-    {
-        imageSource: "/chula.png",
-        title: "React Developer Certification",
-        issuer: "Meta",
-        date: "2023",
-        credentialId: "META-REACT-2023-001",
-        credentialUrl: "https://coursera.org/verify",
-        description: "Comprehensive React.js development skills including hooks, state management, and component architecture.",
-        skills: ["React.js", "JavaScript", "JSX", "State Management", "Component Architecture"]
-    },
-    {
-        imageSource: "/chula.png",
-        title: "Python Programming Certification",
-        issuer: "University of Michigan",
-        date: "2023",
-        credentialId: "UM-PYTHON-2023-001",
-        credentialUrl: "https://coursera.org/verify",
-        description: "Advanced Python programming concepts including data structures, algorithms, and web development.",
-        skills: ["Python", "Data Structures", "Algorithms", "Web Development", "Flask", "Django"]
-    }
 ];
 
 export default experienceConfig;

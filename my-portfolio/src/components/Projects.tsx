@@ -79,10 +79,9 @@ const Projects = () => {
             <div style={projectsContentStyle}>
                 <div style={gridContainerStyle}>
                     {projectsConfig.map((project, index) => (
-                        <ProjectCard 
-                            key={index} 
-                            project={project} 
-                            index={index}
+                        <ProjectCard
+                            key={index}
+                            project={project}
                         />
                     ))}
                 </div>

@@ -8,11 +8,10 @@ import { useIconMap } from "../util/icon";
 
 interface ProjectCardProps {
     project: Project;
-    index: number;
 }
 
-const ProjectCard = ({ project, index }: ProjectCardProps) => {
-    const { isMobile, isTablet, isDesktop } = useMediaQuery();
+const ProjectCard = ({ project }: ProjectCardProps) => {
+    const { isMobile, isTablet} = useMediaQuery();
     const Colors = useColors();
     const { theme } = useTheme();
     const [isHovered, setIsHovered] = useState(false);
@@ -42,14 +41,13 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
         backgroundColor: Colors.BACKGROUND_SECONDARY,
         overflow: 'hidden',
         cursor: 'pointer',
-        transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
         border: `2px solid ${isHovered ? Colors.TEXT_PRIMARY : 'transparent'}`,
         boxShadow: isHovered 
             ? `0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 3px ${Colors.TEXT_PRIMARY}20`
             : '0 8px 16px rgba(0, 0, 0, 0.1)',
         display: 'flex',
         flexDirection: isMobile ? 'column' : 'row',
-        minHeight: isMobile ? 'auto' : isTablet ? '280px' : '320px',
+        height: isMobile ? 'auto' : isTablet ? '280px' : '300px',
     };
 
     const imageContainerStyle: CSSProperties = {
@@ -321,27 +319,16 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ 
-                duration: 0.6, 
-                delay: index * 0.15,
-                ease: "easeOut" 
-            }}
             style={cardStyle}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onClick={() => setIsModalOpen(true)}
-            whileHover={isDesktop ? {
-                y: -10,
-                transition: { duration: 0.3 }
-            } : {}}
         >
-            {/* Image Section */}
             <div style={imageContainerStyle}>
                 {project.featured && (
                     <div style={featuredBadgeStyle}>Featured</div>
                 )}
                 
-                {/* Image Carousel */}
                 <AnimatePresence mode="wait">
                     <motion.img
                         key={currentImageIndex}
@@ -357,7 +344,6 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 
                 <div style={overlayStyle} />
 
-                {/* Navigation arrows (only show if multiple images) */}
                 {images.length > 1 && (
                     <>
                         <motion.div
@@ -379,7 +365,6 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                     </>
                 )}
 
-                {/* Navigation dots (only show if multiple images) */}
                 {images.length > 1 && (
                     <div style={imageNavigationStyle}>
                         {images.map((_, idx) => (
@@ -395,7 +380,6 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 )}
             </div>
 
-            {/* Content Section */}
             <div style={contentStyle}>
                 <div>
                     <h3 style={titleStyle}>{project.title}</h3>
@@ -472,7 +456,6 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
             </div>
         </motion.div>
 
-        {/* Modal */}
         <AnimatePresence>
             {isModalOpen && (
                 <motion.div
@@ -490,7 +473,6 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                         transition={{ type: "spring", damping: 25, stiffness: 300 }}
                         onClick={(e) => e.stopPropagation()}
                     >
-                        {/* Close Button */}
                         <motion.button
                             style={modalCloseButtonStyle}
                             onClick={() => setIsModalOpen(false)}
@@ -504,7 +486,6 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                             ✕
                         </motion.button>
 
-                        {/* Modal Image with Carousel */}
                         <div style={modalImageContainerStyle}>
                             {project.featured && (
                                 <div style={{...featuredBadgeStyle, top: '20px', left: '20px'}}>
@@ -525,7 +506,6 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                                 />
                             </AnimatePresence>
 
-                            {/* Navigation arrows for modal */}
                             {images.length > 1 && (
                                 <>
                                     <motion.div
@@ -547,7 +527,6 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                                 </>
                             )}
 
-                            {/* Navigation dots for modal */}
                             {images.length > 1 && (
                                 <div style={{...imageNavigationStyle, bottom: '20px'}}>
                                     {images.map((_, idx) => (
@@ -563,7 +542,6 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                             )}
                         </div>
 
-                        {/* Modal Body */}
                         <div style={modalBodyStyle}>
                             <h2 style={modalTitleStyle}>{project.title}</h2>
                             
@@ -571,7 +549,6 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                                 {project.description}
                             </p>
 
-                            {/* Technologies Section */}
                             <div style={{marginBottom: '30px'}}>
                                 <h3 style={modalSectionTitleStyle}>Technologies Used</h3>
                                 <div style={{display: 'flex', flexWrap: 'wrap', gap: '10px'}}>
@@ -595,7 +572,6 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                                 </div>
                             </div>
 
-                            {/* Links Section */}
                             <div>
                                 <h3 style={modalSectionTitleStyle}>Project Links</h3>
                                 <div style={{display: 'flex', gap: '15px', flexWrap: 'wrap'}}>
