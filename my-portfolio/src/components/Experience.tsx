@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 const Experience = () => {
     const { isMobile, isTablet } = useMediaQuery();
 
-    const experiencePageStyle: CSSProperties = PageStyle({ backgroundColorType: 2 });
+    const experiencePageStyle: CSSProperties = PageStyle({ backgroundColorType: 1 });
 
     const experienceContentStyle: CSSProperties = {
         width: '100%',
@@ -41,7 +41,7 @@ const Experience = () => {
     };
 
     return (
-        <div id="experiences" style={experiencePageStyle}>
+        <div id="experience" style={experiencePageStyle}>
             <TitleContentPage 
                 title="Experience" 
                 content="Here's a brief rundown of my recent work experience:"

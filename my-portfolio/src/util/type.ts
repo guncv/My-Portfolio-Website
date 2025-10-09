@@ -21,3 +21,26 @@ export interface Project {
     liveLink?: string;
     featured?: boolean;
 }
+
+export interface Education {
+    imageSource: string;
+    institution: string;
+    degree: string;
+    field: string;
+    date: string;
+    gpa?: string;
+    description?: string;
+    achievements?: string[];
+    coursework?: string[];
+}
+
+export interface Certificate {
+    imageSource: string;
+    title: string;
+    issuer: string;
+    date: string;
+    credentialId?: string;
+    credentialUrl?: string;
+    description?: string;
+    skills?: string[];
+}

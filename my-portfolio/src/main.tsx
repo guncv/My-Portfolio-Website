@@ -6,7 +6,7 @@ import { MediaQueryProvider } from './context/MediaQueryContext.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-     <MediaQueryProvider>
+    <MediaQueryProvider>
       <App />
     </MediaQueryProvider>
   </StrictMode>,

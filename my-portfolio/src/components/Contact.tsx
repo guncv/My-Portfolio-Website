@@ -14,7 +14,7 @@ const Contact = () => {
         phone: false,
     });
 
-    const contactPageStyle: CSSProperties = PageStyle({ backgroundColorType: 2 });
+    const contactPageStyle: CSSProperties = PageStyle({ backgroundColorType: 1 });
 
     const contactContainerStyle: CSSProperties = {
         display: 'flex',

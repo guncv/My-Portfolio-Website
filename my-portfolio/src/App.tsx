@@ -4,6 +4,8 @@ import NavBar from './components/NavBar';
 import { useColors } from './style/color';
 import { useMediaQuery } from './context/MediaQueryContext';
 import About from './components/About';
+import Certificates from './components/Certificates';
+import Education from './components/Education';
 import Experience from './components/Experience';
 import Skill from './components/Skill';
 import Contact from './components/Contact';
@@ -19,11 +21,16 @@ function App() {
 
       <NavBar/>
 
-      <div style={{ paddingTop: isDesktop ? '70px' : '65px', backgroundColor: Colors.TEXT_PRIMARY }}>
+      <div>
+        <div style={{ backgroundColor: Colors.BACKGROUND_PRIMARY, width: '100%', height: isDesktop ? '70px' : '60px' }}>
+
+        </div>
         <Introduction />
         <About/>
         <Projects />
         <Experience />
+        <Education />
+        <Certificates />
         <Skill />
         <Contact />
         <Footer />

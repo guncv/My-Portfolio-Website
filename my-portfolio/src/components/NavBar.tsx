@@ -16,18 +16,17 @@ const Navbar: React.FC = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-          const currentScrollY = window.scrollY;
-          if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
-            setScrollDir('down');
-          } else {
-            setScrollDir('up');
-          }
-          lastScrollY.current = currentScrollY;
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+                setScrollDir('down');
+            } else {
+                setScrollDir('up');
+            }
+            lastScrollY.current = currentScrollY;
         };
-      
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-      }, []);
+    }, []);
     
     useEffect(() => {
         if (menuOpen) {
@@ -49,9 +48,9 @@ const Navbar: React.FC = () => {
 
     const navbar:CSSProperties = {
         display: 'flex',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-end',
         alignItems: 'center',
-        padding: isMobile ? '1rem 1rem' : '1rem 2rem',
+        padding: isMobile ? '1rem 1rem' : '1rem 1.84rem',
         position: 'fixed',
         backgroundColor: Colors.BACKGROUND_PRIMARY,
         top: 0,
@@ -69,12 +68,6 @@ const Navbar: React.FC = () => {
         fontSize: isMobile ? '0.8rem' : '1rem',
         borderRadius: '4px',
         cursor: 'pointer'
-    }   
-
-    const logo:CSSProperties = {
-        fontSize: '1.5rem',
-        fontWeight: 600,
-        color: Colors.TEXT_PRIMARY,
     }
 
     const navLinks:CSSProperties = {
@@ -91,12 +84,12 @@ const Navbar: React.FC = () => {
         height: '28px',
         cursor: 'pointer',
     };
-      
+
     const mobileMenuItemWrapper: CSSProperties = {
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-      };
+        alignItems: 'flex-end',
+    };
 
     const dynamicButtonStyle: CSSProperties = {
         ...button,
@@ -107,13 +100,13 @@ const Navbar: React.FC = () => {
         marginLeft: '10px',
         fontSize: isMobile ? '1rem' : '1rem',
     };
-      
+
     const dividerStyle: CSSProperties = {
         height: '1px',
         backgroundColor: Colors.BACKGROUND_PRIMARY,
         opacity: 0.3,
         margin: '0.25rem 0',
-      };
+    };
 
     const horizontalLineStyle: CSSProperties = {
         width: '100%',
@@ -128,9 +121,9 @@ const Navbar: React.FC = () => {
         width: '1px',
         height: '28px',
         backgroundColor: Colors.TEXT_PRIMARY,
-      };
+    };
     
-      const modalBackdrop: CSSProperties = {
+    const modalBackdrop: CSSProperties = {
         position: 'fixed',
         top: 0,
         left: 0,
@@ -172,8 +165,6 @@ const Navbar: React.FC = () => {
 
     return (
         <div style={navbar}>
-            <div style={logo}>MyPortfolio</div>
-        
             {(isDesktop) && (
                 <div style={navLinks}>
                 {topMenuItems.map((item) => (

@@ -1,4 +1,4 @@
-import { Experience, Project } from "./type";
+import { Experience, Project, Education, Certificate } from "./type";
 
 const contactConfig = {
     email: "chanagun.vir@gmail.com",
@@ -114,5 +114,65 @@ const experienceConfig: Experience[] = [
     },
 ];
 
+const educationConfig: Education[] = [
+    {
+        imageSource: "/chula.png",
+        institution: "Chulalongkorn University",
+        degree: "Bachelor of Engineering",
+        field: "Computer Engineering",
+        date: "2022 - Present",
+        gpa: "3.85/4.00",
+        description: "Pursuing Computer Engineering with focus on software development, system design, and emerging technologies.",
+        achievements: [
+            "Dean's List for Academic Excellence",
+            "Teaching Assistant for Software-Defined Systems I",
+            "Active member of Computer Engineering Student Association"
+        ],
+        coursework: [
+            "Software Engineering",
+            "Data Structures and Algorithms", 
+            "Computer Networks",
+            "Database Systems",
+            "Software-Defined Systems",
+            "Machine Learning",
+            "Cloud Computing",
+            "Mobile Application Development"
+        ]
+    }
+];
+
+const certificatesConfig: Certificate[] = [
+    {
+        imageSource: "/chula.png",
+        title: "AWS Cloud Practitioner",
+        issuer: "Amazon Web Services",
+        date: "2024",
+        credentialId: "AWS-CP-2024-001",
+        credentialUrl: "https://aws.amazon.com/verification",
+        description: "Fundamental understanding of AWS Cloud concepts, services, and pricing.",
+        skills: ["AWS Cloud", "Cloud Computing", "AWS Services", "Cloud Security"]
+    },
+    {
+        imageSource: "/chula.png",
+        title: "React Developer Certification",
+        issuer: "Meta",
+        date: "2023",
+        credentialId: "META-REACT-2023-001",
+        credentialUrl: "https://coursera.org/verify",
+        description: "Comprehensive React.js development skills including hooks, state management, and component architecture.",
+        skills: ["React.js", "JavaScript", "JSX", "State Management", "Component Architecture"]
+    },
+    {
+        imageSource: "/chula.png",
+        title: "Python Programming Certification",
+        issuer: "University of Michigan",
+        date: "2023",
+        credentialId: "UM-PYTHON-2023-001",
+        credentialUrl: "https://coursera.org/verify",
+        description: "Advanced Python programming concepts including data structures, algorithms, and web development.",
+        skills: ["Python", "Data Structures", "Algorithms", "Web Development", "Flask", "Django"]
+    }
+];
+
 export default experienceConfig;
-export { contactConfig, projectsConfig };
+export { contactConfig, projectsConfig, educationConfig, certificatesConfig };

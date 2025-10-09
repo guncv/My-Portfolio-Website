@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 const Projects = () => {
     const { isMobile, isTablet } = useMediaQuery();
 
-    const projectsPageStyle: CSSProperties = PageStyle({ backgroundColorType: 1 });
+    const projectsPageStyle: CSSProperties = PageStyle({ backgroundColorType: 2 });
 
     const projectsContentStyle: CSSProperties = {
         width: '100%',
@@ -59,7 +59,6 @@ const Projects = () => {
 
     return (
         <div id="projects" style={{ ...projectsPageStyle, position: 'relative', overflow: 'hidden' }}>
-            {/* Decorative background elements */}
             <div style={topLeftDecorStyle} />
             <div style={bottomRightDecorStyle} />
 
