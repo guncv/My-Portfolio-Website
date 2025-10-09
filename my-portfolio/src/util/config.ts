@@ -1,9 +1,47 @@
-import { Experience } from "./type";
+import { Experience, Project } from "./type";
 
 const contactConfig = {
     email: "chanagun.vir@gmail.com",
     phone: "0626274882",
 }
+
+const projectsConfig: Project[] = [
+    {
+        title: "E-Commerce Platform",
+        description: "A full-stack e-commerce platform with real-time inventory management, payment integration, and admin dashboard. Built with microservices architecture for scalability.",
+        imageSource: ["/profile.jpg", "/secondProfile.png", "/chula.png"], // Multiple images - will show carousel
+        technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Docker"],
+        githubLink: "https://github.com/yourusername/ecommerce",
+        liveLink: "https://ecommerce-demo.com",
+        featured: true,
+    },
+    {
+        title: "Task Management App",
+        description: "Collaborative task management application with real-time updates, drag-and-drop interface, and team collaboration features.",
+        imageSource: "/profile.jpg",
+        technologies: ["Flutter", "Go", "GraphQL", "MongoDB"],
+        githubLink: "https://github.com/yourusername/taskapp",
+        liveLink: "https://taskapp-demo.com",
+        featured: true,
+    },
+    {
+        title: "AI Chat Assistant",
+        description: "Intelligent chatbot powered by advanced language models with context-aware responses and multi-language support.",
+        imageSource: "/profile.jpg", // Replace with actual project image
+        technologies: ["Python", "React", "OpenAI", "Redis", "AWS"],
+        githubLink: "https://github.com/yourusername/ai-chat",
+        featured: false,
+    },
+    {
+        title: "Portfolio Website",
+        description: "Modern, responsive portfolio website with dark mode, smooth animations, and optimized performance.",
+        imageSource: "/profile.jpg", // Replace with actual project image
+        technologies: ["React", "TypeScript", "Vite", "Framer Motion"],
+        githubLink: "https://github.com/yourusername/portfolio",
+        liveLink: "https://yourportfolio.com",
+        featured: false,
+    },
+]
 
 const experienceConfig: Experience[] = [
     {
@@ -77,4 +115,4 @@ const experienceConfig: Experience[] = [
 ];
 
 export default experienceConfig;
-export { contactConfig };
+export { contactConfig, projectsConfig };

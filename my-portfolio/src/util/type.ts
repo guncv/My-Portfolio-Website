@@ -11,3 +11,13 @@ export interface Experience {
     companyIntro?: string;
     positions: Position[];
 }
+
+export interface Project {
+    title: string;
+    description: string;
+    imageSource: string | string[];
+    technologies: string[];
+    githubLink?: string;
+    liveLink?: string;
+    featured?: boolean;
+}
