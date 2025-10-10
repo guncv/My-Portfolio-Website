@@ -208,7 +208,7 @@ const Introduction = () => {
             <div style={rightContainerStyle}>
                 <div style={imageWrapperStyle}>
                     <div style={imageShadowStyle}></div>
-                    <img src="/profile.jpg" alt="Profile" style={imageStyle} />
+                    <img src="/profile.png" alt="Profile" style={imageStyle} />
                 </div>
             </div>
         </div>

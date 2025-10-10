@@ -108,7 +108,7 @@ const About = () => {
         <div id="about" style={aboutPageStyle}>
             <TitleContentPage title={"About me"} />
 
-           <div style={contentStyle}>
+          <div style={contentStyle}>
                 <div style={leftContentStyle}>
                     <div style={imageWrapperStyle}>
                         <div style={imageShadowStyle}></div>
