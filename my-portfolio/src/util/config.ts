@@ -28,13 +28,13 @@ const projectsConfig: Project[] = [
         intro: "Carbon footprint calculation platform developed as a final university project to help SMEs measure emissions without relying on expensive consulting services.",
         description: [
             "Developed a responsive and user-friendly carbon footprint calculation platform using React and TypeScript, designed for cross-device accessibility and clear data visualization.",
-            "Built the frontend to help small and medium-sized enterprises (SMEs) calculate and analyze their carbon footprint without relying on costly external consultants.",
+            "Built the frontend to help small and medium-sized enterprises (SMEs) calculate and analyze their carbon footprint without relying on costly external consultants, and developed the backend API using FastAPI and Python to handle calculations, data processing, and storage.",
             "Set up GitLab CI/CD pipelines to automate build, testing, and deployment processes, ensuring reliable and up-to-date releases.",
             "Collaborated with a team of five as part of a final-year university project, coordinating frontend-backend integration and overall product delivery.",
             "Led a live demo session for ~80 users to showcase the platform, gather feedback, and validate usability and data accuracy."
         ],
         imageSource: ["/cucfp_proj1.png", "/cucfp_proj2.png", "/cucfp_proj3.png"],
-        technologies: ["TypeScript", "React", "Saga Pattern", "GitLab CI/CD", "Docker", "AWS"],
+        technologies: ["TypeScript", "React", "Python", "FastAPI", "Saga Pattern", "GitLab CI/CD", "Docker", "AWS"],
         websiteLink: "https://cucfp.kao9.dev/",
         liveLink: "https://www.youtube.com/watch?v=TwXIw59J8jI",
         featured: true,

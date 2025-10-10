@@ -2,7 +2,6 @@ import { CSSProperties } from "react";
 import { useMediaQuery } from "../context/MediaQueryContext";
 import { useColors } from "../style/color";
 import { useIconMap } from "../util/icon";
-import profileImage from "../../public/profile.jpg";
 
 const Introduction = () => {
     const Colors = useColors();
@@ -209,7 +208,7 @@ const Introduction = () => {
             <div style={rightContainerStyle}>
                 <div style={imageWrapperStyle}>
                     <div style={imageShadowStyle}></div>
-                    <img src={profileImage} alt="Profile" style={imageStyle} />
+                    <img src="/profile.jpg" alt="Profile" style={imageStyle} />
                 </div>
             </div>
         </div>
