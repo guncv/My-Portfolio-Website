@@ -44,6 +44,9 @@ import phone from '../assets/phone.svg';
 import duplicate from '../assets/duplicate.svg';
 import diagonalArrowLight from '../assets/diagonal_arrow_light.svg';
 import diagonalArrowDark from '../assets/diagonal_arrow_dark.svg';
+import lang_graph from '../assets/lang_graph.svg';
+import langchain from '../assets/langchain.webp';
+import openai from '../assets/openai.png';
 
 const SOCIAL_URLS = {
   instagram: 'https://www.instagram.com/guncv_',
@@ -171,6 +174,15 @@ export const useIconMap = () => {
     },
     diagonalArrowDark: {
       icon: diagonalArrowDark,
+    },
+    lang_graph: {
+      icon: lang_graph,
+    },
+    langchain: {
+      icon: langchain,
+    },
+    openai: {
+      icon: openai,
     },
   };
 };

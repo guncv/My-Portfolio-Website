@@ -69,11 +69,10 @@ const experienceConfig: Experience[] = [
         positions: [
             {
                 description: [
-                    "Continuing development on a micro-application project using Flutter to deliver a responsive and user-friendly frontend optimized for mobile platforms.",
-                    "Leveraging Go (Golang) with gRPC and GraphQL to build scalable, high-performance backend services within a microservices architecture.",
-                    "Actively monitored and analyzed logs within OpenShift to identify and address deployment and runtime issues, ensuring greater operational reliability and system performance.",
-                    "Developed and maintained comprehensive unit tests for backend services, promoting long-term code maintainability and aligning with test-driven development (TDD) best practices.",
-                    "Worked collaboratively with cross-functional teams to iterate on new features and provide real-time support, ensuring smooth development cycles and timely product updates."
+                    "Contributed to the development of two major projects: Profita and LH Microapp, focusing on mobile frontend and backend communication layers.",
+                    "Built responsive and user-friendly mobile interfaces using Flutter, ensuring smooth user experiences across various screen sizes and devices.",
+                    "Implemented backend services in Go using gRPC and GraphQL to support efficient data exchange and scalable microservice communication.",
+                    "Integrated KYC verification features by connecting with LH Bank's third-party service, enabling secure identity checks as part of the onboarding flow."
                 ],
                 date: 'January - April 2025',
                 position: 'Software Engineer - Part-Time',
@@ -81,15 +80,16 @@ const experienceConfig: Experience[] = [
             },
             {
                 description: [
-                    "Worked on a new internal project 2–3 days per week while managing university coursework, demonstrating strong time management and responsibility.",
-                    "Developed backend RESTful APIs using Go (Golang) with the Echo framework, ensuring secure and maintainable code structures.",
-                    "Created responsive frontends with React and TypeScript, emphasizing usability and performance.",
-                    "Designed and implemented Krungsri-LineOA webpages, enabling users to view transaction history and request account statements, enhancing user accessibility and financial transparency.",
-                    "Built a Flutter-based micro-app for online trading, optimizing UI for mobile devices to deliver a smooth and intuitive user experience."
+                    "Worked on a new project 2–3 days per week while managing university studies, using Go (Echo) for backend APIs and React with TypeScript on the frontend.",
+                    "Built Krungsri-LineOA webpages for users to view transaction history and request statements. Handled multi-step user interactions on the frontend using the Saga pattern for workflow orchestration.",
+                    "Developed a monolithic Go backend with Hexagonal Architecture, ensuring modular code structure and long-term maintainability.",
+                    "Created a backend registration API with support for OTP-based phone number verification. Also contributed backend logic for validating Google reCAPTCHA tokens to protect against automated requests.",
+                    "Integrated Google reCAPTCHA on frontend forms to improve security and prevent bot-based abuse.",
+                    "Developed the LH-microapp for online trading using Dart and Flutter, enabling users to buy and sell investment portfolios through a smooth and responsive mobile interface."
                 ],
                 date: 'August - December 2024',
                 position: 'Software Engineer - Internship',
-                intro: 'Started as intern, learning modern web development while balancing university studies.',
+                intro: 'Developed full-stack banking applications using Go, React, TypeScript, and Flutter. Built secure user flows with OTP verification and reCAPTCHA integration while managing university coursework.',
             }
         ]
     },
@@ -100,13 +100,12 @@ const experienceConfig: Experience[] = [
             {
                 description: [
                     "Completed a 2-month internship as a Software Developer, focusing on improving internal operational tools using Glide, a low-code platform.",
-                    "Designed intuitive user interfaces and streamlined the admin dashboard to improve workflow efficiency and data accuracy.",
                     "Collaborated with a cross-functional team to gather requirements, implement features, and iterate quickly based on feedback.", 
                     "Gained hands-on experience in low-code development, database design logic, and real-world product lifecycle management.",
                 ],
                 date: 'June - July 2024',
                 position: 'Software Developer - Internship',
-                intro: 'First professional experience in software development using low-code platforms.',
+                intro: 'Completed a 2-month internship as a Software Developer, using Glide (a low-code platform) to manage the product inventory system, including acquisition, rental, and lending operations',
             }
         ]
     },

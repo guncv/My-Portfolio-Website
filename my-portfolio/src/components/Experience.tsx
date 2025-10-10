@@ -56,7 +56,6 @@ const Experience = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        zIndex: 2,
     }
 
     return (
