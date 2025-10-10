@@ -42,7 +42,6 @@ import terraform from '../assets/terraform.svg';
 import email from '../assets/email.svg';
 import phone from '../assets/phone.svg';
 import duplicate from '../assets/duplicate.svg';
-import diagonalArrowLight from '../assets/diagonal_arrow_light.svg';
 import diagonalArrowDark from '../assets/diagonal_arrow_dark.svg';
 import websiteLight from '../assets/website_light.svg';
 import websiteDark from '../assets/website_dark.svg';
@@ -170,9 +169,6 @@ export const useIconMap = () => {
     },
     duplicate: {
       icon: duplicate,
-    },
-    diagonalArrowLight: {
-      icon: diagonalArrowLight,
     },
     diagonalArrowDark: {
       icon: diagonalArrowDark,

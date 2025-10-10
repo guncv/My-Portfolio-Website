@@ -5,13 +5,11 @@ import PageStyle from "../style/global";
 import { certificatesConfig } from "../util/config";
 import { motion } from "framer-motion";
 import { useColors } from "../style/color";
-import { useTheme } from "../context/ThemeContext";
 import { useIconMap } from "../util/icon";
 
 const Certificates = () => {
     const { isMobile, isTablet } = useMediaQuery();
     const Colors = useColors();
-    const { theme } = useTheme();
     const iconMap = useIconMap();
     const [expandedSkills, setExpandedSkills] = useState<Record<number, boolean>>({});
 
@@ -294,10 +292,12 @@ const Certificates = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         style={verifyButtonStyle}
+                                        onMouseOver={(e) => e.currentTarget.style.backgroundColor = Colors.BACKGROUND_TERTIARY}
+                                        onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                                         onClick={(e) => e.stopPropagation()}
                                     >
                                         <img 
-                                            src={theme === 'dark' ? iconMap.diagonalArrowDark.icon : iconMap.diagonalArrowLight.icon} 
+                                            src={iconMap.diagonalArrowDark.icon} 
                                             alt="Verify" 
                                             style={iconStyle}
                                         />

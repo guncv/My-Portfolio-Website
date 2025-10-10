@@ -1,10 +1,189 @@
-import { CSSProperties } from "react";
+import { CSSProperties, useState } from "react";
 import { useMediaQuery } from "../context/MediaQueryContext";
 import TitleContentPage from "./TitleContentPage";
 import PageStyle from "../style/global";
 import { educationConfig } from "../util/config";
 import { motion } from "framer-motion";
 import { useColors } from "../style/color";
+import { Education as EducationType } from "../util/type";
+
+interface EducationCardProps {
+    education: EducationType;
+    index: number;
+    educationCardStyle: CSSProperties;
+    educationHeaderStyle: CSSProperties;
+    institutionLogoStyle: CSSProperties;
+    institutionInfoStyle: CSSProperties;
+    institutionNameStyle: CSSProperties;
+    degreeStyle: CSSProperties;
+    fieldStyle: CSSProperties;
+    dateGpaStyle: CSSProperties;
+    dateStyle: CSSProperties;
+    gpaStyle: CSSProperties;
+    descriptionStyle: CSSProperties;
+    sectionTitleStyle: CSSProperties;
+    listStyle: CSSProperties;
+    listItemStyle: CSSProperties;
+    certificateContainerStyle: CSSProperties;
+    certificateImageStyle: CSSProperties;
+    certificateImageWrapperStyle: CSSProperties;
+}
+
+const EducationCard = ({
+    education,
+    index,
+    educationCardStyle,
+    educationHeaderStyle,
+    institutionLogoStyle,
+    institutionInfoStyle,
+    institutionNameStyle,
+    degreeStyle,
+    fieldStyle,
+    dateGpaStyle,
+    dateStyle,
+    gpaStyle,
+    descriptionStyle,
+    sectionTitleStyle,
+    listStyle,
+    listItemStyle,
+    certificateContainerStyle,
+    certificateImageStyle,
+    certificateImageWrapperStyle,
+}: EducationCardProps) => {
+    const [selectedCertificate, setSelectedCertificate] = useState<string | null>(null);
+    const Colors = useColors();
+
+    return (
+        <>
+            <motion.div
+                style={educationCardStyle}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ 
+                    duration: 0.6, 
+                    delay: index * 0.2,
+                    ease: "easeOut" 
+                }}
+            >
+                <div style={educationHeaderStyle}>
+                    <img 
+                        src={education.imageSource} 
+                        alt={education.institution}
+                        style={institutionLogoStyle}
+                    />
+                    <div style={institutionInfoStyle}>
+                        <h3 style={institutionNameStyle}>{education.institution}</h3>
+                        <p style={degreeStyle}>{education.degree}</p>
+                        <p style={fieldStyle}>{education.field}</p>
+                        <div style={dateGpaStyle}>
+                            <span style={dateStyle}>{education.date}</span>
+                            {education.gpa && (
+                                <span style={gpaStyle}>GPA: {education.gpa}</span>
+                            )}
+                        </div>
+                    </div>
+                </div>
+
+                {education.description && (
+                    <p style={descriptionStyle}>{education.description}</p>
+                )}
+
+                {education.achievements && education.achievements.length > 0 && (
+                    <div>
+                        <h4 style={sectionTitleStyle}>Key Achievements</h4>
+                        <ul style={listStyle}>
+                            {education.achievements.map((achievement, idx) => (
+                                <li key={idx} style={listItemStyle}>
+                                    {achievement}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+
+                {education.coursework && education.coursework.length > 0 && (
+                    <div>
+                        <h4 style={sectionTitleStyle}>Relevant Coursework</h4>
+                        <ul style={listStyle}>
+                            {education.coursework.map((course, idx) => (
+                                <li key={idx} style={listItemStyle}>
+                                    {course}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+
+                {education.certificateImages && education.certificateImages.length > 0 && (
+                    <div>
+                        <h4 style={{ ...sectionTitleStyle, marginTop: '16px' }}>Certificates & Evidence</h4>
+                        <div style={certificateContainerStyle}>
+                            {education.certificateImages.map((certImg, idx) => (
+                                <div 
+                                    key={idx} 
+                                    style={certificateImageWrapperStyle}
+                                    onClick={() => setSelectedCertificate(certImg)}
+                                    onMouseEnter={(e) => {
+                                        const img = e.currentTarget.querySelector('img');
+                                        if (img) {
+                                            img.style.transform = 'scale(1.05)';
+                                        }
+                                        e.currentTarget.style.borderColor = Colors.TEXT_PRIMARY;
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        const img = e.currentTarget.querySelector('img');
+                                        if (img) {
+                                            img.style.transform = 'scale(1)';
+                                        }
+                                        e.currentTarget.style.borderColor = Colors.BACKGROUND_TERTIARY;
+                                    }}
+                                >
+                                    <img 
+                                        src={certImg} 
+                                        alt={`Certificate ${idx + 1}`}
+                                        style={certificateImageStyle}
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+            </motion.div>
+
+            {selectedCertificate && (
+                <div
+                    style={{
+                        position: 'fixed',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        zIndex: 9999,
+                        padding: '20px',
+                        cursor: 'pointer',
+                    }}
+                    onClick={() => setSelectedCertificate(null)}
+                >
+                    <img
+                        src={selectedCertificate}
+                        alt="Certificate"
+                        style={{
+                            maxWidth: '90%',
+                            maxHeight: '90%',
+                            objectFit: 'contain',
+                            borderRadius: '8px',
+                        }}
+                    />
+                </div>
+            )}
+        </>
+    );
+};
 
 const Education = () => {
     const { isMobile, isTablet } = useMediaQuery();
@@ -55,6 +234,31 @@ const Education = () => {
         objectFit: 'cover',
         backgroundColor: Colors.BACKGROUND_TERTIARY,
         padding: isMobile ? '4px' : '4px',
+    };
+
+    const certificateContainerStyle: CSSProperties = {
+        display: 'flex',
+        gap: isMobile ? '8px' : '10px',
+        marginTop: '16px',
+        justifyContent: isMobile ? 'center' : 'flex-start',
+        flexWrap: 'wrap',
+    };
+
+    const certificateImageWrapperStyle: CSSProperties = {
+        position: 'relative',
+        cursor: 'pointer',
+        transition: 'all 0.3s ease',
+        borderRadius: '8px',
+        overflow: 'hidden',
+        border: `2px solid ${Colors.BACKGROUND_TERTIARY}`,
+    };
+
+    const certificateImageStyle: CSSProperties = {
+        width: isMobile ? '80px' : isTablet ? '90px' : '100px',
+        height: isMobile ? '80px' : isTablet ? '90px' : '100px',
+        objectFit: 'cover',
+        borderRadius: '6px',
+        transition: 'transform 0.3s ease',
     };
 
     const institutionInfoStyle: CSSProperties = {
@@ -186,67 +390,28 @@ const Education = () => {
             <div style={educationContentStyle}>
                 <div style={educationContainerStyle}>
                     {educationConfig.map((education, index) => (
-                        <motion.div
+                        <EducationCard 
                             key={index}
-                            style={educationCardStyle}
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.2 }}
-                            transition={{ 
-                                duration: 0.6, 
-                                delay: index * 0.2,
-                                ease: "easeOut" 
-                            }}
-                        >
-                            <div style={educationHeaderStyle}>
-                                <img 
-                                    src={education.imageSource} 
-                                    alt={education.institution}
-                                    style={institutionLogoStyle}
-                                />
-                                <div style={institutionInfoStyle}>
-                                    <h3 style={institutionNameStyle}>{education.institution}</h3>
-                                    <p style={degreeStyle}>{education.degree}</p>
-                                    <p style={fieldStyle}>{education.field}</p>
-                                    <div style={dateGpaStyle}>
-                                        <span style={dateStyle}>{education.date}</span>
-                                        {education.gpa && (
-                                            <span style={gpaStyle}>GPA: {education.gpa}</span>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-
-                            {education.description && (
-                                <p style={descriptionStyle}>{education.description}</p>
-                            )}
-
-                            {education.achievements && education.achievements.length > 0 && (
-                                <div>
-                                    <h4 style={sectionTitleStyle}>Key Achievements</h4>
-                                    <ul style={listStyle}>
-                                        {education.achievements.map((achievement, idx) => (
-                                            <li key={idx} style={listItemStyle}>
-                                                {achievement}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            )}
-
-                            {education.coursework && education.coursework.length > 0 && (
-                                <div>
-                                    <h4 style={sectionTitleStyle}>Relevant Coursework</h4>
-                                    <ul style={listStyle}>
-                                        {education.coursework.map((course, idx) => (
-                                            <li key={idx} style={listItemStyle}>
-                                                {course}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            )}
-                        </motion.div>
+                            education={education}
+                            index={index}
+                            educationCardStyle={educationCardStyle}
+                            educationHeaderStyle={educationHeaderStyle}
+                            institutionLogoStyle={institutionLogoStyle}
+                            institutionInfoStyle={institutionInfoStyle}
+                            institutionNameStyle={institutionNameStyle}
+                            degreeStyle={degreeStyle}
+                            fieldStyle={fieldStyle}
+                            dateGpaStyle={dateGpaStyle}
+                            dateStyle={dateStyle}
+                            gpaStyle={gpaStyle}
+                            descriptionStyle={descriptionStyle}
+                            sectionTitleStyle={sectionTitleStyle}
+                            listStyle={listStyle}
+                            listItemStyle={listItemStyle}
+                            certificateContainerStyle={certificateContainerStyle}
+                            certificateImageStyle={certificateImageStyle}
+                            certificateImageWrapperStyle={certificateImageWrapperStyle}
+                        />
                     ))}
                 </div>
             </div>

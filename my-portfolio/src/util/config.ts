@@ -10,40 +10,81 @@ const projectsConfig: Project[] = [
     {
         title: "Interview Simulation AI",
         intro: "AI-powered interview platform with real-time feedback and scoring system.",
-        description: "An AI-powered interview simulation platform that helps users practice for interviews by providing real-time feedback and insights. The platform features advanced speech recognition, natural language processing, and comprehensive scoring algorithms to evaluate candidate responses across various technical and behavioral questions.",
+        description: [
+            "Built an AI-powered interview simulation platform that lets users practice real interviews and receive real-time feedback with dynamic scoring and conversation flow.",
+            "Developed the backend using Go and the Gin framework, providing REST APIs to manage sessions, user data, and communication with the AI agent server.",
+            "Connected to a Python-based AI agent built with FastAPI, using LangGraph to manage multi-turn interview state and LangChain to orchestrate LLM interactions, speech recognition (Whisper), and text-to-speech with OpenAI APIs.",
+            "Implemented WebSocket connections between the frontend, backend, and AI agent to keep interviews continuous and responsive in real time.",
+            "Designed an asynchronous scoring system using a message queue to let AI models evaluate candidate answers efficiently. Scores and session data are stored in PostgreSQL and cached with Redis for fast retrieval.",
+            "Containerized all services with Docker and deployed on an AWS EC2 instance behind NGINX as a reverse proxy. Cloudflare handles DNS, TLS encryption, and rate limiting for secure and reliable operation."
+        ],
         imageSource: ["/interview_proj1.jpeg", "/interview_proj2.jpeg", "/interview_proj3.jpeg"],
-        technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Docker"],
+        technologies: ["TypeScript", "Go", "Python", "React", "Saga Pattern", "RESTAPI", "WebSocket", "Node.js", "FastAPI", "PostgreSQL", "Redis", "Docker", "LangChain", "LangGraph", "OpenAI"],
         websiteLink: "https://interviewsai.org/",
         featured: true,
     },
     {
-        title: "Task Management App",
-        intro: "Collaborative task management with real-time updates and drag-and-drop interface.",
-        description: "Collaborative task management application with real-time updates, drag-and-drop interface, and team collaboration features. Built with modern web technologies to provide seamless project management experience.",
-        imageSource: "/profile.jpg",
-        technologies: ["Flutter", "Go", "GraphQL", "MongoDB"],
-        githubLink: "https://github.com/yourusername/taskapp",
-        liveLink: "https://taskapp-demo.com",
+        title: "Carbon FootPrint Calculator",
+        intro: "Carbon footprint calculation platform developed as a final university project to help SMEs measure emissions without relying on expensive consulting services.",
+        description: [
+            "Developed a responsive and user-friendly carbon footprint calculation platform using React and TypeScript, designed for cross-device accessibility and clear data visualization.",
+            "Built the frontend to help small and medium-sized enterprises (SMEs) calculate and analyze their carbon footprint without relying on costly external consultants.",
+            "Set up GitLab CI/CD pipelines to automate build, testing, and deployment processes, ensuring reliable and up-to-date releases.",
+            "Collaborated with a team of five as part of a final-year university project, coordinating frontend-backend integration and overall product delivery.",
+            "Led a live demo session for ~80 users to showcase the platform, gather feedback, and validate usability and data accuracy."
+        ],
+        imageSource: ["/cucfp_proj1.png", "/cucfp_proj2.png", "/cucfp_proj3.png"],
+        technologies: ["TypeScript", "React", "Saga Pattern", "GitLab CI/CD", "Docker", "AWS"],
+        websiteLink: "https://cucfp.kao9.dev/",
+        liveLink: "https://www.youtube.com/watch?v=TwXIw59J8jI",
         featured: true,
     },
     {
-        title: "AI Chat Assistant",
-        intro: "Intelligent chatbot with context-aware responses and multi-language support.",
-        description: "Intelligent chatbot powered by advanced language models with context-aware responses and multi-language support. Features include conversation memory, sentiment analysis, and integration with various APIs.",
-        imageSource: "/profile.jpg",
-        technologies: ["Python", "React", "OpenAI", "Redis", "AWS"],
-        githubLink: "https://github.com/yourusername/ai-chat",
+        title: "Online Trading Platform",
+        intro: "Microservice-based trading platform developed as a university group project, featuring modular backend services for authentication, secure payments, and real-time communication.",
+        description: [
+            "Designed and implemented backend services for a microservice-based online trading platform as part of a university group project.",
+            "Developed a user service using Go and Echo to handle authentication and authorization via secure REST APIs.",
+            "Built a transaction service with Stripe integration to support secure purchase and payment operations.",
+            "Implemented a real-time chat service using WebSocket and gRPC, enabling live user communication across the platform.",
+            "Structured each service as an independent microservice to ensure separation of concerns and support scalable system design.",
+        ],
+        imageSource: ["/cump_proj1.png", "/cump_proj2.png", "/cump_proj3.png"],
+        technologies: ["Go", "Echo", "Microservices", "gRPC", "WebSocket", "PostgreSQL", "Redis", "Docker"],
+        liveLink: "https://www.youtube.com/watch?v=N_UUewWK13U",
         featured: false,
     },
     {
-        title: "Portfolio Website",
-        intro: "Modern, responsive portfolio with dark mode and smooth animations.",
-        description: "Modern, responsive portfolio website with dark mode, smooth animations, and optimized performance. Built with React and TypeScript for a fast, accessible user experience.",
-        imageSource: "/profile.jpg",
-        technologies: ["React", "TypeScript", "Vite", "Framer Motion"],
-        githubLink: "https://github.com/yourusername/portfolio",
-        liveLink: "https://yourportfolio.com",
+        title: "Poll Voting Website",
+        intro: "A real-time poll voting website developed collaboratively with a team of three, where users can vote between two choices. Built with Go and deployed using AWS services via Terraform.",
+        description: [
+            "Built collaboratively with a team of three, this real-time poll voting platform lets users vote between two choices. I led backend and infrastructure development using Go, AWS ECS, ElasticCache, and Terraform.",
+            "Containerized the application and deployed it on AWS ECS using Terraform for infrastructure-as-code and consistent provisioning.",
+            "Integrated AWS ElasticCache (Redis) to store and retrieve live poll data with low latency.",
+            "Configured AWS SNS to publish poll activity notifications to subscribed systems or endpoints.",
+            "Provisioned a secure and isolated AWS VPC environment to host the containerized services, ensuring performance and security."
+        ],
+        imageSource: ["/poll_proj1.png", "/poll_proj2.png", "/poll_proj3.png"],
+        technologies: ["Terraform", "Go", "Fiber", "ElasticCache", "AWS SNS", "Elastic Container Service (ECS)", "AWS VPC"],
+        githubLink: "https://github.com/guncv/Poll-Voting-Website",
         featured: false,
+    },
+    {
+        title: "Terraform AWS For WordPress and MariaDB",
+        intro: "Automated AWS infrastructure setup using Terraform to deploy a WordPress site on EC2 with a MariaDB database, S3 storage integration, and secure VPC networking.",
+        description: [
+            "Developed a complete Infrastructure-as-Code (IaC) solution using Terraform to automate AWS resource provisioning for a WordPress environment.",
+            "Provisioned a Virtual Private Cloud (VPC) with subnets, routing, NAT gateway, and security groups to ensure secure and isolated network configuration.",
+            "Launched an EC2 instance to host the WordPress application and configured MariaDB as the backend database server.",
+            "Integrated an S3 bucket for media storage to enhance scalability and reduce load on the EC2 instance.",
+            "Created setup scripts to automate installation and configuration of WordPress and MariaDB during instance initialization.",
+            "Configured IAM roles and permissions to allow EC2 instances to securely interact with AWS services such as S3.",
+            "Implemented modular Terraform files for easy management, reuse, and future scalability of the infrastructure."
+        ],
+        imageSource: ["/wordpress1.png"],
+        technologies: ["Terraform", "AWS EC2", "VPC", "MariaDB", "S3", "IAM", "NAT Gateway", "Security Groups", "Bash"],
+        githubLink: "https://github.com/guncv/TerraformEC2SetUp",
+        featured: false
     },
 ]
 
@@ -60,7 +101,7 @@ const experienceConfig: Experience[] = [
                     "Helped debug deployment issues and explained architectural concepts such as service orchestration, infrastructure-as-code, and edge computing.",
                 ],
                 date: 'September 2025 – Present',
-                position: 'Teaching Assistant (Software Defined Systems) – Support Role',
+                position: 'TA Assistant (Software Defined Systems) – Support Role',
                 intro: 'Volunteered to assist students with labs, homework, and infrastructure-related questions for a senior-level systems course at Chulalongkorn University.',
             }
         ]
@@ -73,7 +114,7 @@ const experienceConfig: Experience[] = [
                 description: [
                     "Contributed to two high-impact projects — Profita and LH Microapp — supporting both frontend and backend development for mobile banking applications.",
                     "Implemented eKYC verification features for Profita using Go with the Gin framework for backend microservices and React Native for mobile UI, enabling secure digital onboarding for new users.",
-                    "Collaborated with the team to resolve UAT issues in LH Microapp’s detection feature, coordinating with stakeholders and refining Flutter-based mobile interfaces to ensure accurate behavior, responsiveness, and design consistency.",
+                    "Collaborated with the team to resolve UAT issues in LH Microapp’s detection feature, coordinating with Product Owner and refining Flutter-based mobile interfaces to ensure accurate behavior, responsiveness, and design consistency.",
                 ],
                 date: 'January – April 2025',
                 position: 'Software Engineer – Part-Time',
@@ -132,7 +173,8 @@ const educationConfig: Education[] = [
             "Software-Defined Systems",
             "Cloud Computing",
             "Artificial Intelligence"
-        ]
+        ],
+        certificateImages: ["/graduate1.jpg", "/graduate2.jpg"]
     }
 ];
 

@@ -14,7 +14,7 @@ export interface Experience {
 
 export interface Project {
     title: string;
-    description: string;
+    description: string[];
     intro?: string;
     imageSource: string | string[];
     technologies: string[];
@@ -34,6 +34,7 @@ export interface Education {
     description?: string;
     achievements?: string[];
     coursework?: string[];
+    certificateImages?: string[];
 }
 
 export interface Certificate {

@@ -26,6 +26,18 @@ const PositionDropdown = ({ experience, isOpen, onClose, onSelectPosition }: Pos
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isOpen]);
+
+    useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
                 onClose();
@@ -147,6 +159,19 @@ const PositionDropdown = ({ experience, isOpen, onClose, onSelectPosition }: Pos
 const ExperienceModal = ({ experience, selectedPosition, isOpen, onClose }: ExperienceModalProps) => {
     const { isMobile, isTablet } = useMediaQuery();
     const Colors = useColors();
+
+    // Prevent body scroll when modal is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isOpen]);
 
     const overlayStyle: CSSProperties = {
         position: 'fixed',

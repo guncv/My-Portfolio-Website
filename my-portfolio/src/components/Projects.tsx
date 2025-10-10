@@ -26,10 +26,10 @@ const Projects = () => {
         display: 'grid',
         gridTemplateColumns: isMobile 
             ? '1fr' 
-            : 'repeat(auto-fit, minmax(400px, 1fr))',
+            : 'repeat(auto-fit, minmax(min(550px, 100%), 1fr))',
         gap: isMobile ? '30px' : isTablet ? '35px' : '40px',
         width: '100%',
-        maxWidth: '1600px',
+        maxWidth: '1400px',
     };
 
     const decorativeElementStyle: CSSProperties = {

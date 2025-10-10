@@ -25,6 +25,18 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     useEffect(() => {
+        if (isModalOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isModalOpen]);
+
+    useEffect(() => {
         if (images.length <= 1 || !isHovered || isModalOpen) return;
         
         const interval = setInterval(() => {
@@ -144,7 +156,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
     };
 
     const titleStyle: CSSProperties = {
-        fontSize: isMobile ? '20px' : isTablet ? '20px' : '22px',
+        fontSize: isMobile ? '17px' : isTablet ? '15px' : '18px',
         fontWeight: 'bold',
         margin: '0 0 10px 0',
         color: Colors.TEXT_PRIMARY,
@@ -230,19 +242,12 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
     };
 
     const modalTitleStyle: CSSProperties = {
-        fontSize: isMobile ? '26px' : isTablet ? '32px' : '36px',
+        fontSize: isMobile ? '26px' : isTablet ? '32px' : '39px',
         fontWeight: 'bold',
         color: Colors.TEXT_PRIMARY,
         margin: '0 0 20px 0',
     };
 
-    const modalDescriptionStyle: CSSProperties = {
-        fontSize: isMobile ? '15px' : '16px',
-        lineHeight: '1.8',
-        color: Colors.TEXT_PRIMARY,
-        opacity: 0.9,
-        margin: '0 0 30px 0',
-    };
 
     const modalSectionTitleStyle: CSSProperties = {
         fontSize: isMobile ? '16px' : '18px',
@@ -435,7 +440,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                             onClick={(e) => e.stopPropagation()}
                         >
                             <img 
-                                src={theme === 'dark' ? iconMap.diagonalArrowLight.icon : iconMap.diagonalArrowDark.icon} 
+                                src={iconMap.diagonalArrowDark.icon} 
                                 alt="Live Demo" 
                                 style={iconStyle}
                             />
@@ -486,7 +491,6 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                             style={modalCloseButtonStyle}
                             onClick={() => setIsModalOpen(false)}
                             whileHover={{ 
-                                scale: 1.1, 
                                 backgroundColor: Colors.TEXT_PRIMARY,
                                 color: Colors.BACKGROUND_SECONDARY 
                             }}
@@ -520,16 +524,12 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                                     <motion.div
                                         style={{...navigationArrowStyle('left'), width: '45px', height: '45px', fontSize: '22px'}}
                                         onClick={handlePrevImage}
-                                        whileHover={{ scale: 1.1, backgroundColor: Colors.TEXT_PRIMARY }}
-                                        whileTap={{ scale: 0.95 }}
                                     >
                                         ‹
                                     </motion.div>
                                     <motion.div
                                         style={{...navigationArrowStyle('right'), width: '45px', height: '45px', fontSize: '22px'}}
                                         onClick={handleNextImage}
-                                        whileHover={{ scale: 1.1, backgroundColor: Colors.TEXT_PRIMARY }}
-                                        whileTap={{ scale: 0.95 }}
                                     >
                                         ›
                                     </motion.div>
@@ -554,9 +554,47 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                         <div style={modalBodyStyle}>
                             <h2 style={modalTitleStyle}>{project.title}</h2>
                             
-                            <p style={modalDescriptionStyle}>
-                                {project.description}
-                            </p>
+                            {project.intro && (
+                                <p style={{
+                                    fontSize: isMobile ? '16px' : '18px',
+                                    lineHeight: '1.7',
+                                    color: Colors.TEXT_PRIMARY,
+                                    opacity: 0.9,
+                                    marginBottom: '30px',
+                                    fontStyle: 'italic',
+                                    borderLeft: `4px solid ${Colors.TEXT_PRIMARY}`,
+                                    paddingLeft: '20px',
+                                }}>
+                                    {project.intro}
+                                </p>
+                            )}
+                            
+                            <div style={{marginBottom: '30px'}}>
+                                <h3 style={modalSectionTitleStyle}>Project Overview</h3>
+                                <ul style={{listStyle: 'none', padding: 0, margin: 0}}>
+                                    {project.description.map((item, index) => (
+                                        <li key={index} style={{
+                                            fontSize: isMobile ? '15px' : '16px',
+                                            lineHeight: '1.8',
+                                            marginBottom: '12px',
+                                            paddingLeft: '20px',
+                                            position: 'relative',
+                                            color: Colors.TEXT_PRIMARY,
+                                        }}>
+                                            <div style={{
+                                                position: 'absolute',
+                                                left: 0,
+                                                top: '8px',
+                                                width: '6px',
+                                                height: '6px',
+                                                backgroundColor: Colors.TEXT_PRIMARY,
+                                                borderRadius: '50%',
+                                            }}></div>
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
 
                             <div style={{marginBottom: '30px'}}>
                                 <h3 style={modalSectionTitleStyle}>Technologies Used</h3>
@@ -570,9 +608,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                                                 fontSize: '13px',
                                             }}
                                             whileHover={{
-                                                backgroundColor: Colors.TEXT_PRIMARY,
-                                                color: Colors.BACKGROUND_SECONDARY,
-                                                scale: 1.05,
+                                                backgroundColor: Colors.BACKGROUND_TERTIARY,
                                             }}
                                         >
                                             {tech}
@@ -595,9 +631,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                                                 fontSize: '15px',
                                             }}
                                             whileHover={{
-                                                backgroundColor: Colors.TEXT_PRIMARY,
-                                                color: Colors.BACKGROUND_SECONDARY,
-                                                scale: 1.05,
+                                                backgroundColor: Colors.BACKGROUND_TERTIARY,
                                             }}
                                             onClick={(e) => e.stopPropagation()}
                                         >
@@ -620,14 +654,12 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                                                 fontSize: '15px',
                                             }}
                                             whileHover={{
-                                                backgroundColor: Colors.TEXT_PRIMARY,
-                                                color: Colors.BACKGROUND_SECONDARY,
-                                                scale: 1.05,
+                                                backgroundColor: Colors.BACKGROUND_TERTIARY,
                                             }}
                                             onClick={(e) => e.stopPropagation()}
                                         >
                                             <img 
-                                                src={theme === 'dark' ? iconMap.diagonalArrowLight.icon : iconMap.diagonalArrowDark.icon} 
+                                                src={iconMap.diagonalArrowDark.icon} 
                                                 alt="Live Demo" 
                                                 style={{width: '20px', height: '20px'}}
                                             />
@@ -645,9 +677,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                                                 fontSize: '15px',
                                             }}
                                             whileHover={{
-                                                backgroundColor: Colors.TEXT_PRIMARY,
-                                                color: Colors.BACKGROUND_SECONDARY,
-                                                scale: 1.05,
+                                                backgroundColor: Colors.BACKGROUND_TERTIARY,
                                             }}
                                             onClick={(e) => e.stopPropagation()}
                                         >
