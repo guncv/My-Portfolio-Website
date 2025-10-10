@@ -3,7 +3,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   server: {
     allowedHosts: [
-      '4803-49-228-103-139.ngrok-free.app'
+      '547e1b7e0f88.ngrok-free.app'
     ],
   },
 });

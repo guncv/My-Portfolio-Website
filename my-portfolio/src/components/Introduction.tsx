@@ -6,6 +6,7 @@ import { useIconMap } from "../util/icon";
 const Introduction = () => {
     const Colors = useColors();
     const { isMobile, isTablet, isDesktop } = useMediaQuery();
+    const iconMap = useIconMap();
 
     const introductionPageStyle: CSSProperties = {
         width: '100vw',
@@ -39,6 +40,7 @@ const Introduction = () => {
         fontSize: isDesktop ? '1vw' : 
             isTablet ? '1.3vw' : '15px',
         textAlign: isMobile ? 'center' : 'start',
+        paddingRight: isDesktop ? '30px' : '0',
         color: Colors.TEXT_PRIMARY,
         fontWeight: 'normal',
     }
@@ -117,55 +119,54 @@ const Introduction = () => {
         marginRight: isDesktop ? '30px' : '0',
         position: 'relative',
         width: isDesktop
-          ? 'clamp(200px, 25vw, 300px)'
-          : isTablet
-          ? 'clamp(150px, 20vw, 200px)'
-          : '240px',
-        height: isDesktop
-          ? 'clamp(250px, 28vw, 350px)'
-          : isTablet
-          ? 'clamp(200px, 24vw, 240px)'
-          : '250px',
+            ? 'clamp(200px, 25vw, 300px)'
+            : isTablet
+            ? 'clamp(150px, 20vw, 200px)'
+            : '240px',
+            height: isDesktop
+            ? 'clamp(250px, 28vw, 350px)'
+            : isTablet
+            ? 'clamp(200px, 24vw, 240px)'
+            : '250px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center', 
-      };
+    };
       
-      const imageStyle: CSSProperties = {
+    const imageStyle: CSSProperties = {
         width: isDesktop
-          ? 'clamp(200px, 25vw, 300px)'
-          : isTablet
-          ? 'clamp(150px, 20vw, 200px)'
-          : '200px',
+            ? 'clamp(200px, 25vw, 300px)'
+            : isTablet
+            ? 'clamp(150px, 20vw, 200px)'
+            : '200px',
         height: isDesktop
-          ? 'clamp(250px, 28vw, 350px)'
-          : isTablet
-          ? 'clamp(200px, 24vw, 240px)'
-          : '250px',
+            ? 'clamp(250px, 28vw, 350px)'
+            : isTablet
+            ? 'clamp(200px, 24vw, 240px)'
+            : '250px',
         objectFit: 'cover',
         zIndex: 2,
         position: 'relative',
         boxShadow: '0 5px 15px rgba(0,0,0,0.2)',
-      };
-      
-      const imageShadowStyle: CSSProperties = {
+    };
+
+    const imageShadowStyle: CSSProperties = {
         position: 'absolute',
         width: isDesktop
-          ? 'clamp(200px, 25vw, 300px)'
-          : isTablet
-          ? 'clamp(150px, 20vw, 200px)'
-          : '250px',
+            ? 'clamp(200px, 25vw, 300px)'
+            : isTablet
+            ? 'clamp(150px, 20vw, 200px)'
+            : '250px',
         height: isDesktop
-          ? 'clamp(250px, 28vw, 350px)'
-          : isTablet
-          ? 'clamp(200px, 24vw, 240px)'
-          : '240px',
+            ? 'clamp(250px, 28vw, 350px)'
+            : isTablet
+            ? 'clamp(200px, 24vw, 240px)'
+            : '240px',
         backgroundColor: Colors.BACKGROUND_TERTIARY,
         top: '30px',
         left: isMobile ? '-5px' : '30px',
         zIndex: 1,
-      };
-      
+    };  
 
     return (
         <div style={introductionPageStyle}>
@@ -173,24 +174,24 @@ const Introduction = () => {
             <div style={leftContainerStyle}>
                 <h1 style={titleStyle}>Hi, I'm Gun <span style={nameStyle}>👋🏻🙋🏻‍♂️</span></h1>
                 <h1 style={descriptionStyle}>
-                    I'm a final-year Software Engineering student at Chulalongkorn University with a focus on full-stack web development.
+                    I'm a recent Computer Engineering graduate from Chulalongkorn University, passionate about both Software Engineering and AI Engineering. 
                     <br />
-                    I enjoy building scalable, user-centric applications using modern frontend and backend technologies.
+                    I enjoy building scalable, user-focused applications that combine modern web technologies with intelligent systems. 
                     <br />
-                    I'm currently seeking full-time opportunities, with availability starting in July 2025.
+                    I'm currently available to start immediately and open to full-time opportunities.
                 </h1>
 
                 <div style={metaContainerStyle}>
                     <div style={locationContainerStyle}>
                         <div style={blockStyle}>
-                            <img src={useIconMap().location.icon} alt="Location" style={locationIconStyle} />
+                            <img src={iconMap.location.icon} alt="Location" style={locationIconStyle} />
                         </div>
                         <h1 style={locationStyle}>Bangkok, Thailand</h1>
                     </div>
 
                     <div style={locationContainerStyle}>
                         <div style={blockStyle}>
-                            <img src={useIconMap().available.icon} alt="Available" style={availableIconStyle} />
+                            <img src={iconMap.available.icon} alt="Available" style={availableIconStyle} />
                         </div>
                         <h1 style={locationStyle}>Available for a new challenge</h1>
                     </div>
@@ -198,9 +199,9 @@ const Introduction = () => {
                 
 
                 <div style={iconContainerStyle}>
-                    <img src={useIconMap().github.icon} alt="Github" style={iconStyle} onClick={() => useIconMap().github.onClick()}/>
-                    <img src={useIconMap().linkedin.icon} alt="LinkedIn" style={iconStyle} onClick={() => useIconMap().linkedin.onClick()}/>
-                    <img src={useIconMap().instagram.icon} alt="Instagram" style={iconStyle} onClick={() => useIconMap().instagram.onClick()}/>
+                    <img src={iconMap.github.icon} alt="Github" style={iconStyle} onClick={iconMap.github.onClick}/>
+                    <img src={iconMap.linkedin.icon} alt="LinkedIn" style={iconStyle} onClick={iconMap.linkedin.onClick}/>
+                    <img src={iconMap.medium.icon} alt="Medium" style={iconStyle} onClick={iconMap.medium.onClick}/>
                 </div>
             </div>
 

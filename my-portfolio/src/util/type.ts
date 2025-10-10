@@ -15,10 +15,12 @@ export interface Experience {
 export interface Project {
     title: string;
     description: string;
+    intro?: string;
     imageSource: string | string[];
     technologies: string[];
     githubLink?: string;
     liveLink?: string;
+    websiteLink?: string;
     featured?: boolean;
 }
 

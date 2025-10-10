@@ -107,7 +107,7 @@ const Contact = () => {
                 <div style={subContactIconContainerStyle}>
                     <img src={useIconMap().linkedin.icon} alt="LinkedIn" style={subContactIconStyle} onClick={useIconMap().linkedin.onClick} />
                     <img src={useIconMap().github.icon} alt="GitHub" style={subContactIconStyle} onClick={useIconMap().github.onClick} />
-                    <img src={useIconMap().instagram.icon} alt="Instagram" style={subContactIconStyle} onClick={useIconMap().instagram.onClick} />
+                    <img src={useIconMap().medium.icon} alt="Medium" style={subContactIconStyle} onClick={useIconMap().medium.onClick} />
                 </div>
             </div>
         </div>

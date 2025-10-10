@@ -44,14 +44,17 @@ import phone from '../assets/phone.svg';
 import duplicate from '../assets/duplicate.svg';
 import diagonalArrowLight from '../assets/diagonal_arrow_light.svg';
 import diagonalArrowDark from '../assets/diagonal_arrow_dark.svg';
+import websiteLight from '../assets/website_light.svg';
+import websiteDark from '../assets/website_dark.svg';
 import lang_graph from '../assets/lang_graph.svg';
 import langchain from '../assets/langchain.webp';
 import openai from '../assets/openai.png';
+import medium from '../assets/medium.png';
 
-const SOCIAL_URLS = {
-  instagram: 'https://www.instagram.com/guncv_',
+const SOCIAL_URLS = { 
   linkedin: 'https://www.linkedin.com/in/chanagun-viriyasathapornpong-ab8a27299/',
   github: 'https://www.github.com/guncv',
+  medium: 'https://medium.com/@chanagun.vir',
 };
 
 const handleIconClick = (platform: keyof typeof SOCIAL_URLS) => {
@@ -64,8 +67,7 @@ export const useIconMap = () => {
 
   return {
     instagram: {
-      icon: isLight ? instagramLight : instagramDark,
-      onClick: () => handleIconClick('instagram'),
+      icon: isLight ? instagramLight : instagramDark    
     },
     linkedin: {
       icon: isLight ? linkedinLight : linkedinDark,
@@ -175,6 +177,9 @@ export const useIconMap = () => {
     diagonalArrowDark: {
       icon: diagonalArrowDark,
     },
+    website: {
+      icon: isLight ? websiteLight : websiteDark,
+    },
     lang_graph: {
       icon: lang_graph,
     },
@@ -183,6 +188,10 @@ export const useIconMap = () => {
     },
     openai: {
       icon: openai,
+    },
+    medium: {
+      icon: medium,
+      onClick: () => handleIconClick('medium'),
     },
   };
 };

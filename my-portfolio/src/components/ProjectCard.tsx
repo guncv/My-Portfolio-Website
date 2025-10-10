@@ -349,16 +349,12 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                         <motion.div
                             style={navigationArrowStyle('left')}
                             onClick={handlePrevImage}
-                            whileHover={{ scale: 1.1, backgroundColor: Colors.TEXT_PRIMARY }}
-                            whileTap={{ scale: 0.95 }}
                         >
                             ‹
                         </motion.div>
                         <motion.div
                             style={navigationArrowStyle('right')}
                             onClick={handleNextImage}
-                            whileHover={{ scale: 1.1, backgroundColor: Colors.TEXT_PRIMARY }}
-                            whileTap={{ scale: 0.95 }}
                         >
                             ›
                         </motion.div>
@@ -384,26 +380,24 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                 <div>
                     <h3 style={titleStyle}>{project.title}</h3>
                     <p style={descriptionStyle}>
-                        {project.description}
+                        {project.intro || project.description}
                     </p>
 
                     <div style={techContainerStyle}>
-                        {project.technologies.slice(0, 5).map((tech, idx) => (
+                        {project.technologies.slice(0, 4).map((tech, idx) => (
                             <motion.span
                                 key={idx}
                                 style={techBadgeStyle}
                                 whileHover={{
-                                    backgroundColor: Colors.TEXT_PRIMARY,
-                                    color: Colors.BACKGROUND_SECONDARY,
-                                    scale: 1.05,
+                                    backgroundColor: Colors.BACKGROUND_TERTIARY,
                                 }}
                             >
                                 {tech}
                             </motion.span>
                         ))}
-                        {project.technologies.length > 5 && (
+                        {project.technologies.length > 4 && (
                             <span style={{...techBadgeStyle, opacity: 0.6}}>
-                                +{project.technologies.length - 5} more
+                                +{project.technologies.length - 4} more
                             </span>
                         )}
                     </div>
@@ -417,9 +411,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                             rel="noopener noreferrer"
                             style={linkButtonStyle}
                             whileHover={{
-                                backgroundColor: Colors.TEXT_PRIMARY,
-                                color: Colors.BACKGROUND_SECONDARY,
-                                scale: 1.05,
+                                backgroundColor: Colors.BACKGROUND_TERTIARY,
                             }}
                             onClick={(e) => e.stopPropagation()}
                         >
@@ -438,9 +430,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                             rel="noopener noreferrer"
                             style={linkButtonStyle}
                             whileHover={{
-                                backgroundColor: Colors.TEXT_PRIMARY,
-                                color: Colors.BACKGROUND_SECONDARY,
-                                scale: 1.05,
+                                backgroundColor: Colors.BACKGROUND_TERTIARY,
                             }}
                             onClick={(e) => e.stopPropagation()}
                         >
@@ -450,6 +440,25 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                                 style={iconStyle}
                             />
                             Demo
+                        </motion.a>
+                    )}
+                    {project.websiteLink && (
+                        <motion.a
+                            href={project.websiteLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={linkButtonStyle}
+                            whileHover={{
+                                backgroundColor: Colors.BACKGROUND_TERTIARY,
+                            }}
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <img 
+                                src={iconMap.website.icon} 
+                                alt="Website" 
+                                style={iconStyle}
+                            />
+                            Website
                         </motion.a>
                     )}
                 </div>
@@ -623,6 +632,31 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                                                 style={{width: '20px', height: '20px'}}
                                             />
                                             View Live Demo
+                                        </motion.a>
+                                    )}
+                                    {project.websiteLink && (
+                                        <motion.a
+                                            href={project.websiteLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            style={{
+                                                ...linkButtonStyle,
+                                                padding: '12px 24px',
+                                                fontSize: '15px',
+                                            }}
+                                            whileHover={{
+                                                backgroundColor: Colors.TEXT_PRIMARY,
+                                                color: Colors.BACKGROUND_SECONDARY,
+                                                scale: 1.05,
+                                            }}
+                                            onClick={(e) => e.stopPropagation()}
+                                        >
+                                            <img 
+                                                src={iconMap.website.icon} 
+                                                alt="Website" 
+                                                style={{width: '20px', height: '20px'}}
+                                            />
+                                            Visit Website
                                         </motion.a>
                                     )}
                                 </div>

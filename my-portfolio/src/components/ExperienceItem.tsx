@@ -4,6 +4,7 @@ import { useColors } from "../style/color";
 import { Experience, Position } from "../util/type";
 import { useIconMap } from "../util/icon";
 import { useTheme } from "../context/ThemeContext";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface ExperienceModalProps {
     experience: Experience;
@@ -52,6 +53,7 @@ const PositionDropdown = ({ experience, isOpen, onClose, onSelectPosition }: Pos
         justifyContent: 'center',
         zIndex: 99999,
         padding: isMobile ? '20px' : '40px',
+        backdropFilter: 'blur(5px)',
     };
 
     const dropdownStyle: CSSProperties = {
@@ -104,32 +106,41 @@ const PositionDropdown = ({ experience, isOpen, onClose, onSelectPosition }: Pos
     };
 
     return (
-        isOpen && (
-            <div
-                style={overlayStyle}
-                onClick={onClose}
-            >
-                <div
-                    ref={dropdownRef}
-                    style={dropdownStyle}
-                    onClick={(e) => e.stopPropagation()}
+        <AnimatePresence>
+            {isOpen && (
+                <motion.div
+                    style={overlayStyle}
+                    onClick={onClose}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
                 >
-                    <h3 style={titleStyle}>Select a Position at {experience.company}</h3>
-                    <div style={positionsListStyle}>
-                        {experience.positions.map((position, index) => (
-                            <div
-                                key={index}
-                                style={positionItemStyle}
-                                onClick={() => onSelectPosition(position)}
-                            >
-                                <h4 style={positionTitleStyle}>{position.position}</h4>
-                                <p style={positionDateStyle}>{position.date}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        )
+                    <motion.div
+                        ref={dropdownRef}
+                        style={dropdownStyle}
+                        onClick={(e) => e.stopPropagation()}
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0.8, opacity: 0 }}
+                        transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                    >
+                        <h3 style={titleStyle}>Select a Position at {experience.company}</h3>
+                        <div style={positionsListStyle}>
+                            {experience.positions.map((position, index) => (
+                                <div
+                                    key={index}
+                                    style={positionItemStyle}
+                                    onClick={() => onSelectPosition(position)}
+                                >
+                                    <h4 style={positionTitleStyle}>{position.position}</h4>
+                                    <p style={positionDateStyle}>{position.date}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </motion.div>
+                </motion.div>
+            )}
+        </AnimatePresence>
     );
 };
 
@@ -149,6 +160,7 @@ const ExperienceModal = ({ experience, selectedPosition, isOpen, onClose }: Expe
         justifyContent: 'center',
         zIndex: 99999,
         padding: isMobile ? '20px' : '40px',
+        backdropFilter: 'blur(5px)',
     };
 
     const modalStyle: CSSProperties = {
@@ -259,48 +271,62 @@ const ExperienceModal = ({ experience, selectedPosition, isOpen, onClose }: Expe
     };
 
     return (
-        isOpen && (
-            <div
-                style={overlayStyle}
-                onClick={onClose}
-            >
-                <div
-                    style={modalStyle}
-                    onClick={(e) => e.stopPropagation()}
+        <AnimatePresence>
+            {isOpen && (
+                <motion.div
+                    style={overlayStyle}
+                    onClick={onClose}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
                 >
-                    <button style={closeButtonStyle} onClick={onClose}>
-                        ×
-                    </button>
+                    <motion.div
+                        style={modalStyle}
+                        onClick={(e) => e.stopPropagation()}
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0.8, opacity: 0 }}
+                        transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                    >
+                        <motion.button 
+                            style={closeButtonStyle} 
+                            onClick={onClose}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                        >
+                            ✕
+                        </motion.button>
 
-                    <div style={headerStyle}>
-                        <img src={experience.imageSource} alt={experience.company} style={logoStyle} />
-                        <div style={companyInfoStyle}>
-                            <h2 style={companyNameStyle}>{experience.company}</h2>
-                            {selectedPosition && (
-                                <>
-                                    <h3 style={positionTitleStyle}>{selectedPosition.position}</h3>
-                                    <p style={dateStyle}>{selectedPosition.date}</p>
-                                </>
-                            )}
+                        <div style={headerStyle}>
+                            <img src={experience.imageSource} alt={experience.company} style={logoStyle} />
+                            <div style={companyInfoStyle}>
+                                <h2 style={companyNameStyle}>{experience.company}</h2>
+                                {selectedPosition && (
+                                    <>
+                                        <h3 style={positionTitleStyle}>{selectedPosition.position}</h3>
+                                        <p style={dateStyle}>{selectedPosition.date}</p>
+                                    </>
+                                )}
+                            </div>
                         </div>
-                    </div>
 
-                    {selectedPosition && (
-                        <div style={descriptionStyle}>
-                            <h4 style={descriptionTitleStyle}>Key Responsibilities & Achievements:</h4>
-                            <ul style={bulletListStyle}>
-                                {selectedPosition.description.map((item, index) => (
-                                    <li key={index} style={bulletItemStyle}>
-                                        <div style={bulletPointStyle}></div>
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
-                </div>
-            </div>
-        )
+                        {selectedPosition && (
+                            <div style={descriptionStyle}>
+                                <h4 style={descriptionTitleStyle}>Key Responsibilities & Achievements:</h4>
+                                <ul style={bulletListStyle}>
+                                    {selectedPosition.description.map((item, index) => (
+                                        <li key={index} style={bulletItemStyle}>
+                                            <div style={bulletPointStyle}></div>
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+                    </motion.div>
+                </motion.div>
+            )}
+        </AnimatePresence>
     );
 };
 
@@ -315,6 +341,7 @@ const ExperienceItem = ({ experience }: ExperienceItemProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [selectedPosition, setSelectedPosition] = useState<Position | null>(null);
+    const [isHovered, setIsHovered] = useState(false);
 
     const handleCardClick = () => {
         if (experience.positions.length === 1) {
@@ -355,9 +382,9 @@ const ExperienceItem = ({ experience }: ExperienceItemProps) => {
         borderRadius: '12px',
         backgroundColor: Colors.BACKGROUND_SECONDARY,
         color: Colors.TEXT_PRIMARY,
-        border: '2px solid transparent',
-        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
-        transform: 'translateY(0)',
+        border: `2px solid ${isHovered ? Colors.TEXT_PRIMARY : 'transparent'}`,
+        boxShadow: isHovered ? '0 8px 25px rgba(0, 0, 0, 0.2)' : '0 4px 15px rgba(0, 0, 0, 0.1)',
+        transform: isHovered ? 'scale(1.02) translateY(-4px)' : 'scale(1) translateY(0)',
         transition: 'all 0.3s ease',
         cursor: 'pointer',
         margin: '0 auto',
@@ -471,6 +498,8 @@ const ExperienceItem = ({ experience }: ExperienceItemProps) => {
             <div 
                 style={experienceItemStyle} 
                 onClick={handleCardClick}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
             >
 
                 <div style={companyHeaderStyle}>

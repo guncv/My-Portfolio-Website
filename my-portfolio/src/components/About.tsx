@@ -119,20 +119,21 @@ const About = () => {
                 <div style={rightContentStyle}>
                     <h1 style={titleRightContentStyle}>Curious, Creative, and Always Building</h1>
                     <h1 style={descriptionRightContentStyle}>
-                        I’m Chanagun Viriyasathapornpong, a software engineering student in my final year at Chulalongkorn University. My passion lies in creating digital solutions that are both functional and beautifully crafted.
-                        <br /><br />
-                        I specialize in fullstack development — combining strong frontend skills with solid backend logic. I enjoy turning designs into clean, responsive interfaces while also architecting the underlying systems that power them.
-                        <br /><br />
-                        My technical skills include modern web technologies like React, TypeScript, JavaScript, and Flutter for mobile UI, as well as backend languages like Golang, Python, and Java. I'm comfortable working with databases like PostgreSQL, MongoDB, and Redis, and enjoy using tools like Docker and Git.
-                        <br /><br />
-                        What I love most about software is the blend of logic and creativity it demands. I’m constantly learning, exploring new frameworks, and finding better ways to build intuitive user experiences.
-                        <br /><br />
-                        I take pride in writing clean, maintainable code and solving problems in efficient, elegant ways. Whether I’m working solo or collaborating with a team, I’m always driven by purpose and curiosity.
-                        <br /><br />
-                        Outside of coding, I enjoy reading about system design, watching dev talks, and contributing to side projects that challenge me in new ways.
-                        <br /><br />
-                        My goal is to keep growing as a fullstack engineer, contribute meaningfully to real-world products, and always stay curious about the tech that powers the world.
-                        </h1>
+                      I’m Chanagun Viriyasathapornpong, a recent Computer Engineering graduate from Chulalongkorn University, passionate about creating digital solutions that are both functional and beautifully designed.
+                      <br /><br />
+                      I specialize in full-stack development — blending strong frontend expertise with solid backend architecture. I love transforming ideas and designs into clean, responsive interfaces while building reliable systems that scale.
+                      <br /><br />
+                      My technical toolkit includes modern web technologies like React, TypeScript, and JavaScript, as well as Flutter for mobile development. On the backend, I work with Golang, Python, and Java, and I’m experienced with databases such as PostgreSQL, MongoDB, and Redis. I also enjoy working with DevOps tools like Docker, Git, and CI/CD pipelines.
+                      <br /><br />
+                      What excites me most about software engineering is the harmony between logic and creativity. I’m constantly learning new frameworks, refining my coding practices, and finding smarter ways to craft intuitive, impactful user experiences.
+                      <br /><br />
+                      I take pride in writing clean, maintainable, and efficient code. Whether collaborating in a team or working independently, I’m always driven by curiosity, problem-solving, and a desire to build meaningful products.
+                      <br /><br />
+                      Beyond coding, I enjoy exploring system design concepts, watching developer talks, and working on side projects that push me outside my comfort zone.
+                      <br /><br />
+                      My goal is to continue growing as a full-stack and AI engineer — building intelligent, scalable applications that make a real impact.
+                    </h1>
+
                 </div>
             </div>
         </div>

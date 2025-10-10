@@ -8,17 +8,18 @@ const contactConfig = {
 
 const projectsConfig: Project[] = [
     {
-        title: "E-Commerce Platform",
-        description: "A full-stack e-commerce platform with real-time inventory management, payment integration, and admin dashboard. Built with microservices architecture for scalability.",
-        imageSource: ["/profile.jpg", "/secondProfile.png", "/chula.png"],
+        title: "Interview Simulation AI",
+        intro: "AI-powered interview platform with real-time feedback and scoring system.",
+        description: "An AI-powered interview simulation platform that helps users practice for interviews by providing real-time feedback and insights. The platform features advanced speech recognition, natural language processing, and comprehensive scoring algorithms to evaluate candidate responses across various technical and behavioral questions.",
+        imageSource: ["/interview_proj1.jpeg", "/interview_proj2.jpeg", "/interview_proj3.jpeg"],
         technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Docker"],
-        githubLink: "https://github.com/yourusername/ecommerce",
-        liveLink: "https://ecommerce-demo.com",
+        websiteLink: "https://interviewsai.org/",
         featured: true,
     },
     {
         title: "Task Management App",
-        description: "Collaborative task management application with real-time updates, drag-and-drop interface, and team collaboration features.",
+        intro: "Collaborative task management with real-time updates and drag-and-drop interface.",
+        description: "Collaborative task management application with real-time updates, drag-and-drop interface, and team collaboration features. Built with modern web technologies to provide seamless project management experience.",
         imageSource: "/profile.jpg",
         technologies: ["Flutter", "Go", "GraphQL", "MongoDB"],
         githubLink: "https://github.com/yourusername/taskapp",
@@ -27,7 +28,8 @@ const projectsConfig: Project[] = [
     },
     {
         title: "AI Chat Assistant",
-        description: "Intelligent chatbot powered by advanced language models with context-aware responses and multi-language support.",
+        intro: "Intelligent chatbot with context-aware responses and multi-language support.",
+        description: "Intelligent chatbot powered by advanced language models with context-aware responses and multi-language support. Features include conversation memory, sentiment analysis, and integration with various APIs.",
         imageSource: "/profile.jpg",
         technologies: ["Python", "React", "OpenAI", "Redis", "AWS"],
         githubLink: "https://github.com/yourusername/ai-chat",
@@ -35,7 +37,8 @@ const projectsConfig: Project[] = [
     },
     {
         title: "Portfolio Website",
-        description: "Modern, responsive portfolio website with dark mode, smooth animations, and optimized performance.",
+        intro: "Modern, responsive portfolio with dark mode and smooth animations.",
+        description: "Modern, responsive portfolio website with dark mode, smooth animations, and optimized performance. Built with React and TypeScript for a fast, accessible user experience.",
         imageSource: "/profile.jpg",
         technologies: ["React", "TypeScript", "Vite", "Framer Motion"],
         githubLink: "https://github.com/yourusername/portfolio",
@@ -51,15 +54,14 @@ const experienceConfig: Experience[] = [
         positions: [
             {
                 description: [
-                    "Assisted official Teaching Assistants during lab and lecture sessions for Software-Defined Systems I (2110506).",
-                    "Helped students understand core concepts including containers, Docker, Kubernetes, cloud computing, and DevOps practices.",
-                    "Supported assignment reviews and guided students on practical exercises covering AWS, SDN (ONOS, Mininet), and edge computing technologies.",
-                    "Volunteered based on academic performance and demonstrated interest in system design and distributed computing.",
-                    "Facilitated hands-on learning experiences and helped students debug complex infrastructure and networking assignments."
+                    "Volunteered as a support TA for Software-Defined Systems, assisting students during lab hours and project work sessions.",
+                    "Answered student questions related to containers, Docker, Kubernetes, microservices, cloud infrastructure, and DevOps workflows.",
+                    "Provided guidance and technical clarification on lab assignments involving tools like AWS EC2, S3, and VPC, based on the course's hands-on curriculum.",
+                    "Helped debug deployment issues and explained architectural concepts such as service orchestration, infrastructure-as-code, and edge computing.",
                 ],
-                date: 'September 2025 - Present',
-                position: 'TA Assistant - Software Define System',
-                intro: 'Volunteered as TA helper for advanced systems course. Guided students in cloud infrastructure and DevOps labs.',
+                date: 'September 2025 – Present',
+                position: 'Teaching Assistant (Software Defined Systems) – Support Role',
+                intro: 'Volunteered to assist students with labs, homework, and infrastructure-related questions for a senior-level systems course at Chulalongkorn University.',
             }
         ]
     },
@@ -69,20 +71,18 @@ const experienceConfig: Experience[] = [
         positions: [
             {
                 description: [
-                    "Contributed to the development of two major projects: Profita and LH Microapp, focusing on mobile frontend and backend communication layers.",
-                    "Built responsive and user-friendly mobile interfaces using Flutter, ensuring smooth user experiences across various screen sizes and devices.",
-                    "Implemented backend services in Go using gRPC and GraphQL to support efficient data exchange and scalable microservice communication.",
-                    "Integrated KYC verification features by connecting with LH Bank's third-party service, enabling secure identity checks as part of the onboarding flow."
+                    "Contributed to two high-impact projects — Profita and LH Microapp — supporting both frontend and backend development for mobile banking applications.",
+                    "Implemented eKYC verification features for Profita using Go with the Gin framework for backend microservices and React Native for mobile UI, enabling secure digital onboarding for new users.",
+                    "Collaborated with the team to resolve UAT issues in LH Microapp’s detection feature, coordinating with stakeholders and refining Flutter-based mobile interfaces to ensure accurate behavior, responsiveness, and design consistency.",
                 ],
-                date: 'January - April 2025',
-                position: 'Software Engineer - Part-Time',
-                intro: 'Part-time role while completing university. Focused on microservices and Flutter development.',
+                date: 'January – April 2025',
+                position: 'Software Engineer – Part-Time',
+                intro: 'Part-time software engineer contributing to both mobile and backend development for LH Bank’s Profita and LH Microapp projects.',
             },
             {
                 description: [
                     "Worked on a new project 2–3 days per week while managing university studies, using Go (Echo) for backend APIs and React with TypeScript on the frontend.",
                     "Built Krungsri-LineOA webpages for users to view transaction history and request statements. Handled multi-step user interactions on the frontend using the Saga pattern for workflow orchestration.",
-                    "Developed a monolithic Go backend with Hexagonal Architecture, ensuring modular code structure and long-term maintainability.",
                     "Created a backend registration API with support for OTP-based phone number verification. Also contributed backend logic for validating Google reCAPTCHA tokens to protect against automated requests.",
                     "Integrated Google reCAPTCHA on frontend forms to improve security and prevent bot-based abuse.",
                     "Developed the LH-microapp for online trading using Dart and Flutter, enabling users to buy and sell investment portfolios through a smooth and responsive mobile interface."
