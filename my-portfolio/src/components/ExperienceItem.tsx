@@ -3,7 +3,6 @@ import { useMediaQuery } from "../context/MediaQueryContext";
 import { useColors } from "../style/color";
 import { Experience, Position } from "../util/type";
 import { useIconMap } from "../util/icon";
-import { useTheme } from "../context/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ExperienceModalProps {
@@ -362,7 +361,6 @@ interface ExperienceItemProps {
 const ExperienceItem = ({ experience }: ExperienceItemProps) => {
     const { isMobile, isTablet, isDesktop } = useMediaQuery()
     const Colors = useColors();
-    const { theme } = useTheme();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [selectedPosition, setSelectedPosition] = useState<Position | null>(null);
@@ -535,7 +533,7 @@ const ExperienceItem = ({ experience }: ExperienceItemProps) => {
                         </div>
                     </div>
                     <img 
-                        src={theme === 'dark' ? useIconMap().diagonalArrowDark.icon : useIconMap().diagonalArrowLight.icon}
+                        src={useIconMap().diagonalArrowDark.icon}
                         alt="click to expand" 
                         style={{
                             ...arrowIconStyle,
