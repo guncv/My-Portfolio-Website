@@ -2,7 +2,7 @@ import { CSSProperties } from "react";
 import { useMediaQuery } from "../context/MediaQueryContext";
 import { useColors } from "../style/color";
 import { useIconMap } from "../util/icon";
-import profileImage from "/public/profile.jpg";
+import profileImage from "../../public/profile.jpg";
 
 const Introduction = () => {
     const Colors = useColors();
