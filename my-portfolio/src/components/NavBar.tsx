@@ -177,7 +177,7 @@ const Navbar: React.FC = () => {
 
                 {isDesktop && (
                 <a
-                    href="/resume_version_2.pdf"
+                    href="/Resume (4).pdf"
                     download="Chanagun_Resume.pdf"
                     style={dynamicButtonStyle}
                     onMouseEnter={() => setHovered(true)}
@@ -216,7 +216,7 @@ const Navbar: React.FC = () => {
 
                             <div style={{margin: '20px 0'}}>
                                 <a
-                                    href="/resume_version_2.pdf"
+                                    href="/Resume (4).pdf"
                                     download="Chanagun_Resume.pdf"
                                     style={dynamicButtonStyle}
                                     onMouseEnter={() => setHovered(true)}
