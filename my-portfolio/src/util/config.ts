@@ -1,5 +1,6 @@
 import { Experience, Project, Education, Certificate } from "./type";
 import awsDark from "../assets/aws_dark.svg";
+import ibm from "../assets/ibm.svg";
 
 const contactConfig = {
     email: "chanagun.vir@gmail.com",
@@ -179,6 +180,28 @@ const educationConfig: Education[] = [
 ];
 
 const certificatesConfig: Certificate[] = [
+    {
+        imageSource: ibm,
+        title: "IBM RAG and Agentic AI Specialization",
+        issuer: "IBM",
+        date: "2025",
+        credentialUrl: "https://coursera.org/share/90cdf6ae8cec168ea967c95c92ab2156",
+        description: "Completed IBM’s 8-course program on building RAG and Agentic AI systems using tools like LangChain, LangGraph, CrewAI, and vector databases. Gained hands-on experience in LLM app development and orchestration.",
+        skills: [
+            "Retrieval-Augmented Generation (RAG)",
+            "Agentic AI",
+            "LangChain",
+            "LangGraph",
+            "CrewAI",
+            "AutoGen",
+            "BeeAI",
+            "Vector Databases (FAISS, Chroma)",
+            "Multimodal AI",
+            "LLM Orchestration",
+            "Prompt Engineering",
+            "AI Application Development"
+        ]
+    },
     {
         imageSource: awsDark,
         title: "AWS Academy Graduate - Cloud Architecting",

@@ -49,6 +49,7 @@ import lang_graph from '../assets/lang_graph.svg';
 import langchain from '../assets/langchain.webp';
 import openai from '../assets/openai.png';
 import medium from '../assets/medium.png';
+import ibm from '../assets/ibm.svg';
 
 const SOCIAL_URLS = { 
   linkedin: 'https://www.linkedin.com/in/chanagun-viriyasathapornpong-ab8a27299/',
@@ -188,6 +189,9 @@ export const useIconMap = () => {
     medium: {
       icon: medium,
       onClick: () => handleIconClick('medium'),
+    },
+    ibm: {
+      icon: ibm,
     },
   };
 };
