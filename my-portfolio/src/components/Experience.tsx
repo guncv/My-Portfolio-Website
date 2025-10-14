@@ -5,6 +5,7 @@ import TitleContentPage from "./TitleContentPage";
 import PageStyle from "../style/global";
 import ExperienceItem from "./ExperienceItem";
 import experienceConfig from "../util/config";
+import { motion } from "framer-motion";
 
 const Experience = () => {
     const { isMobile, isTablet } = useMediaQuery();
@@ -48,6 +49,7 @@ const Experience = () => {
         zIndex: 0,
         borderRadius: '3px',
         boxShadow: `0 0 10px ${Colors.TEXT_PRIMARY}40`,
+        transformOrigin: 'top',
     }
 
     const timelineItemWrapperStyle: CSSProperties = {
@@ -67,10 +69,31 @@ const Experience = () => {
 
             <div style={experienceContentStyle}>
                 <div style={timelineContainerStyle}>
-                    <div style={timelineLineStyle}></div>
+                    <motion.div 
+                        style={timelineLineStyle}
+                        initial={{ scaleY: 0, opacity: 0 }}
+                        whileInView={{ scaleY: 1, opacity: 1 }}
+                        viewport={{ once: true, amount: 0.1 }}
+                        transition={{ 
+                            duration: 0.8, 
+                            ease: "easeOut",
+                            delay: 0.2
+                        }}
+                    ></motion.div>
                     <div style={{display: 'flex', flexDirection: 'column', gap: '50px'}}>
                         {experienceConfig.map((experience, index) => (
-                            <div key={index} style={timelineItemWrapperStyle}>
+                            <motion.div 
+                                key={index} 
+                                style={timelineItemWrapperStyle}
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.2 }}
+                                transition={{ 
+                                    duration: 0.4, 
+                                    delay: index * 0.1,
+                                    ease: "easeOut" 
+                                }}
+                            >
                                 <div
                                     style={{
                                         marginLeft: '0',
@@ -80,7 +103,7 @@ const Experience = () => {
                                 >
                                     <ExperienceItem experience={experience} />
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>

@@ -205,7 +205,7 @@ const Certificates = () => {
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
+                        transition={{ duration: 0.4, delay: 0.1 }}
                     >
                         Professional certifications and credentials that validate my technical expertise and continuous learning.
                     </motion.span>
@@ -222,7 +222,7 @@ const Certificates = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.2 }}
                             transition={{ 
-                                duration: 0.6, 
+                                duration: 0.4, 
                                 delay: index * 0.1,
                                 ease: "easeOut" 
                             }}

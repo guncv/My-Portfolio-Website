@@ -18,7 +18,7 @@ const Skill = () => {
             opacity: 1,
             y: 0,
             transition: {
-                duration: 0.5,
+                duration: 0.4,
                 ease: "easeOut",
             },
         }),
@@ -117,7 +117,7 @@ const Skill = () => {
                         initial="hidden"
                         whileInView="visible"
                         viewport={viewportOptions}
-                        transition={{ delay: rowIndex * 0.3 }}
+                        transition={{ delay: rowIndex * 0.15 }}
                         onMouseEnter={handleMouseOver}
                         onMouseLeave={handleMouseOut}
                     >

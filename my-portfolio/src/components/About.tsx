@@ -3,6 +3,7 @@ import { useColors } from "../style/color";
 import { useMediaQuery } from "../context/MediaQueryContext";
 import TitleContentPage from "./TitleContentPage";
 import PageStyle from "../style/global";
+import { motion } from "framer-motion";
 const About = () => {
     const Colors = useColors();
     const { isMobile, isTablet, isDesktop } = useMediaQuery();
@@ -109,32 +110,44 @@ const About = () => {
             <TitleContentPage title={"About me"} />
 
           <div style={contentStyle}>
-                <div style={leftContentStyle}>
+                <motion.div 
+                    style={leftContentStyle}
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                >
                     <div style={imageWrapperStyle}>
                         <div style={imageShadowStyle}></div>
                         <img src="/secondProfile.png" alt="Profile" style={imageStyle} />
                     </div>
-                </div>
+                </motion.div>
 
-                <div style={rightContentStyle}>
+                <motion.div 
+                    style={rightContentStyle}
+                    initial={{ opacity: 0, x: 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
+                >
                     <h1 style={titleRightContentStyle}>Curious, Creative, and Always Building</h1>
                     <h1 style={descriptionRightContentStyle}>
-                      I’m Chanagun Viriyasathapornpong, a recent Computer Engineering graduate from Chulalongkorn University, passionate about creating digital solutions that are both functional and beautifully designed.
+                      I'm Chanagun Viriyasathapornpong, a recent Computer Engineering graduate from Chulalongkorn University, passionate about creating digital solutions that are both functional and beautifully designed.
                       <br /><br />
                       I specialize in full-stack development — blending strong frontend expertise with solid backend architecture. I love transforming ideas and designs into clean, responsive interfaces while building reliable systems that scale.
                       <br /><br />
-                      My technical toolkit includes modern web technologies like React, TypeScript, and JavaScript, as well as Flutter for mobile development. On the backend, I work with Golang, Python, and Java, and I’m experienced with databases such as PostgreSQL, MongoDB, and Redis. I also enjoy working with DevOps tools like Docker, Git, and CI/CD pipelines.
+                      My technical toolkit includes modern web technologies like React, TypeScript, and JavaScript, as well as Flutter for mobile development. On the backend, I work with Golang, Python, and Java, and I'm experienced with databases such as PostgreSQL, MongoDB, and Redis. I also enjoy working with DevOps tools like Docker, Git, and CI/CD pipelines.
                       <br /><br />
-                      What excites me most about software engineering is the harmony between logic and creativity. I’m constantly learning new frameworks, refining my coding practices, and finding smarter ways to craft intuitive, impactful user experiences.
+                      What excites me most about software engineering is the harmony between logic and creativity. I'm constantly learning new frameworks, refining my coding practices, and finding smarter ways to craft intuitive, impactful user experiences.
                       <br /><br />
-                      I take pride in writing clean, maintainable, and efficient code. Whether collaborating in a team or working independently, I’m always driven by curiosity, problem-solving, and a desire to build meaningful products.
+                      I take pride in writing clean, maintainable, and efficient code. Whether collaborating in a team or working independently, I'm always driven by curiosity, problem-solving, and a desire to build meaningful products.
                       <br /><br />
                       Beyond coding, I enjoy exploring system design concepts, watching developer talks, and working on side projects that push me outside my comfort zone.
                       <br /><br />
                       My goal is to continue growing as a full-stack and AI engineer — building intelligent, scalable applications that make a real impact.
                     </h1>
 
-                </div>
+                </motion.div>
             </div>
         </div>
     )

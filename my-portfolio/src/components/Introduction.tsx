@@ -2,6 +2,7 @@ import { CSSProperties } from "react";
 import { useMediaQuery } from "../context/MediaQueryContext";
 import { useColors } from "../style/color";
 import { useIconMap } from "../util/icon";
+import { motion } from "framer-motion";
 
 const Introduction = () => {
     const Colors = useColors();
@@ -171,7 +172,13 @@ const Introduction = () => {
     return (
         <div style={introductionPageStyle}>
 
-            <div style={leftContainerStyle}>
+            <motion.div 
+                style={leftContainerStyle}
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+            >
                 <h1 style={titleStyle}>Hi, I'm Gun <span style={nameStyle}>👋🏻🙋🏻‍♂️</span></h1>
                 <h1 style={descriptionStyle}>
                     I'm a recent Computer Engineering graduate from Chulalongkorn University, passionate about both Software Engineering and AI Engineering. 
@@ -203,14 +210,20 @@ const Introduction = () => {
                     <img src={iconMap.linkedin.icon} alt="LinkedIn" style={iconStyle} onClick={iconMap.linkedin.onClick}/>
                     <img src={iconMap.medium.icon} alt="Medium" style={iconStyle} onClick={iconMap.medium.onClick}/>
                 </div>
-            </div>
+            </motion.div>
 
-            <div style={rightContainerStyle}>
+            <motion.div 
+                style={rightContainerStyle}
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
+            >
                 <div style={imageWrapperStyle}>
                     <div style={imageShadowStyle}></div>
                     <img src="/profile.png" alt="Profile" style={imageStyle} />
                 </div>
-            </div>
+            </motion.div>
         </div>
     )
 }

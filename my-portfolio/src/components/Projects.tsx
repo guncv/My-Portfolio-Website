@@ -69,7 +69,7 @@ const Projects = () => {
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
+                        transition={{ duration: 0.4, delay: 0.1 }}
                     >
                         Explore my recent work and side projects showcasing various technologies and creative solutions.
                     </motion.span>

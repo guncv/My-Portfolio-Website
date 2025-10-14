@@ -61,8 +61,8 @@ const EducationCard = ({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ 
-                    duration: 0.6, 
-                    delay: index * 0.2,
+                    duration: 0.4, 
+                    delay: index * 0.1,
                     ease: "easeOut" 
                 }}
             >
@@ -251,14 +251,19 @@ const Education = () => {
         borderRadius: '8px',
         overflow: 'hidden',
         border: `2px solid ${Colors.BACKGROUND_TERTIARY}`,
+        display: 'inline-block',
+        lineHeight: 0,
     };
 
     const certificateImageStyle: CSSProperties = {
-        width: isMobile ? '80px' : isTablet ? '90px' : '100px',
-        height: isMobile ? '80px' : isTablet ? '90px' : '100px',
-        objectFit: 'cover',
+        maxWidth: isMobile ? '120px' : isTablet ? '140px' : '160px',
+        maxHeight: isMobile ? '120px' : isTablet ? '140px' : '160px',
+        width: 'auto',
+        height: 'auto',
+        objectFit: 'contain',
         borderRadius: '6px',
         transition: 'transform 0.3s ease',
+        display: 'block',
     };
 
     const institutionInfoStyle: CSSProperties = {
@@ -380,7 +385,7 @@ const Education = () => {
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
+                        transition={{ duration: 0.4, delay: 0.1 }}
                     >
                         My academic journey and educational achievements that have shaped my technical foundation.
                     </motion.span>
