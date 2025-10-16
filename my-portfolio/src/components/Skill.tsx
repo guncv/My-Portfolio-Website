@@ -99,7 +99,7 @@ const Skill = () => {
         { name: 'Git', icon: iconMap.git.icon },
         { name: 'LangGraph', icon: iconMap.lang_graph.icon },
         { name: 'LangChain', icon: iconMap.langchain.icon },
-        { name: 'OpenAI', icon: iconMap.openai.icon },
+        { name: 'LlamaIndex', icon: iconMap.llamaIndex.icon },
     ];
 
     return (

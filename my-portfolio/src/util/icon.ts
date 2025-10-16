@@ -50,8 +50,9 @@ import langchain from '../assets/langchain.webp';
 import openai from '../assets/openai.png';
 import medium from '../assets/medium.png';
 import ibm from '../assets/ibm.svg';
+import llamaIndex from '../assets/llamaindex.svg';
 
-const SOCIAL_URLS = { 
+const SOCIAL_URLS = {
   linkedin: 'https://www.linkedin.com/in/chanagun-viriyasathapornpong-ab8a27299/',
   github: 'https://www.github.com/guncv',
   medium: 'https://medium.com/@chanagun.vir',
@@ -192,6 +193,9 @@ export const useIconMap = () => {
     },
     ibm: {
       icon: ibm,
+    },
+    llamaIndex: {
+      icon: llamaIndex,
     },
   };
 };

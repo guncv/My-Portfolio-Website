@@ -27,16 +27,12 @@ const Certificates = () => {
     };
 
     const certificatesGridStyle: CSSProperties = {
-        display: 'grid',
-        gridTemplateColumns: isMobile 
-            ? '1fr' 
-            : isTablet 
-                ? '1fr' 
-                : 'repeat(auto-fit, minmax(350px, 1fr))',
+        display: 'flex',
+        flexWrap: 'wrap',
         gap: isMobile ? '25px' : isTablet ? '30px' : '35px',
         width: '100%',
         maxWidth: isTablet ? '600px' : '1200px',
-        justifyItems: 'center',
+        justifyContent: 'center',
     };
 
     const certificateCardStyle: CSSProperties = {
