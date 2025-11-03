@@ -22,6 +22,11 @@ const projectsConfig: Project[] = [
         imageSource: ["/interview_proj1.jpeg", "/interview_proj2.jpeg", "/interview_proj3.jpeg"],
         technologies: ["TypeScript", "Go", "Python", "React", "Saga Pattern", "RESTAPI", "WebSocket", "Node.js", "FastAPI", "PostgreSQL", "Redis", "Docker", "LangChain", "LangGraph", "OpenAI"],
         websiteLink: "https://interviewsai.org/",
+        githubLinks: [
+            { label: "Frontend", url: "https://github.com/guncv/Interview-User-Client" },
+            { label: "Backend", url: "https://github.com/guncv/Interview-Backend-Server" },
+            { label: "AI Agent", url: "https://github.com/guncv/Interview-AI-Agent" }
+        ],
         featured: true,
     },
     {

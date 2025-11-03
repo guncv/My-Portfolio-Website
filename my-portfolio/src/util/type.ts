@@ -18,7 +18,8 @@ export interface Project {
     intro?: string;
     imageSource: string | string[];
     technologies: string[];
-    githubLink?: string;
+    githubLink?: string; // For backward compatibility - use githubLinks for multiple repos
+    githubLinks?: Array<{ label: string; url: string }>; // For multiple GitHub repositories (e.g., frontend, backend, AI)
     liveLink?: string;
     websiteLink?: string;
     featured?: boolean;

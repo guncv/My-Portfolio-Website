@@ -49,23 +49,29 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
     const cardStyle: CSSProperties = {
         position: 'relative',
         width: '100%',
-        borderRadius: '16px',
+        borderRadius: '20px',
         backgroundColor: Colors.BACKGROUND_SECONDARY,
         overflow: 'hidden',
         cursor: 'pointer',
-        border: `2px solid ${isHovered ? Colors.TEXT_PRIMARY : 'transparent'}`,
+        border: `1px solid ${theme === 'dark' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)'}`,
         boxShadow: isHovered 
-            ? `0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 3px ${Colors.TEXT_PRIMARY}20`
-            : '0 8px 16px rgba(0, 0, 0, 0.1)',
+            ? theme === 'dark'
+                ? '0 25px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(99, 102, 241, 0.3)'
+                : '0 25px 50px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(59, 130, 246, 0.3)'
+            : theme === 'dark'
+                ? '0 4px 20px rgba(0, 0, 0, 0.3)'
+                : '0 4px 20px rgba(0, 0, 0, 0.08)',
         display: 'flex',
         flexDirection: isMobile ? 'column' : 'row',
-        height: isMobile ? 'auto' : isTablet ? '280px' : '300px',
+        height: isMobile ? 'auto' : isTablet ? '300px' : '320px',
+        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+        transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
     };
 
     const imageContainerStyle: CSSProperties = {
         position: 'relative',
         width: isMobile ? '100%' : isTablet ? '45%' : '50%',
-        height: isMobile ? '250px' : '100%',
+        height: isMobile ? '280px' : '100%',
         overflow: 'hidden',
         backgroundColor: Colors.BACKGROUND_TERTIARY,
         flexShrink: 0,
@@ -75,8 +81,8 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         width: '100%',
         height: '100%',
         objectFit: 'cover',
-        transition: 'transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-        transform: isHovered ? 'scale(1.1)' : 'scale(1)',
+        transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+        transform: isHovered ? 'scale(1.08)' : 'scale(1)',
     };
 
     const overlayStyle: CSSProperties = {
@@ -85,22 +91,29 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         left: 0,
         right: 0,
         bottom: 0,
-        background: `linear-gradient(${isMobile ? 'to bottom' : 'to right'}, transparent 0%, ${Colors.BACKGROUND_SECONDARY}30 100%)`,
+        background: `linear-gradient(${isMobile ? 'to bottom' : 'to right'}, transparent 0%, ${Colors.BACKGROUND_SECONDARY}40 100%)`,
         transition: 'all 0.4s ease',
+        opacity: isHovered ? 0.6 : 0.3,
     };
 
     const featuredBadgeStyle: CSSProperties = {
         position: 'absolute',
-        top: '15px',
-        left: '15px',
-        backgroundColor: theme === 'dark' ? '#6366F1' : '#3B82F6',
+        top: '18px',
+        left: '18px',
+        background: theme === 'dark' 
+            ? 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%)'
+            : 'linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)',
         color: '#ffffff',
-        padding: isMobile ? '5px 12px' : '6px 15px',
-        borderRadius: '20px',
+        padding: isMobile ? '6px 14px' : '7px 18px',
+        borderRadius: '24px',
         fontSize: isMobile ? '11px' : '12px',
-        fontWeight: 'bold',
+        fontWeight: '700',
+        letterSpacing: '0.5px',
         zIndex: 2,
-        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+        boxShadow: theme === 'dark'
+            ? '0 4px 16px rgba(99, 102, 241, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1)'
+            : '0 4px 16px rgba(59, 130, 246, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2)',
+        textTransform: 'uppercase',
     };
 
     const imageNavigationStyle: CSSProperties = {
@@ -114,65 +127,83 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
     };
 
     const navigationDotStyle = (isActive: boolean): CSSProperties => ({
-        width: '10px',
-        height: '10px',
+        width: isActive ? '12px' : '10px',
+        height: isActive ? '12px' : '10px',
         borderRadius: '50%',
         backgroundColor: isActive 
-            ? Colors.TEXT_PRIMARY 
-            : `${Colors.TEXT_PRIMARY}50`,
+            ? (theme === 'dark' ? '#ffffff' : '#000000')
+            : (theme === 'dark' ? 'rgba(255, 255, 255, 0.4)' : 'rgba(0, 0, 0, 0.4)'),
         cursor: 'pointer',
         transition: 'all 0.3s ease',
-        border: `2px solid ${Colors.TEXT_PRIMARY}`,
-        boxShadow: isActive ? '0 0 8px rgba(255, 255, 255, 0.5)' : 'none',
+        border: `2px solid ${isActive 
+            ? (theme === 'dark' ? '#ffffff' : '#000000')
+            : (theme === 'dark' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.3)')}`,
+        boxShadow: isActive 
+            ? (theme === 'dark'
+                ? '0 0 12px rgba(255, 255, 255, 0.6)'
+                : '0 0 12px rgba(0, 0, 0, 0.3)')
+            : 'none',
+        backdropFilter: 'blur(10px)',
     });
 
     const navigationArrowStyle = (direction: 'left' | 'right'): CSSProperties => ({
         position: 'absolute',
         top: '50%',
-        [direction]: '10px',
+        [direction]: '12px',
         transform: 'translateY(-50%)',
-        width: '35px',
-        height: '35px',
+        width: '40px',
+        height: '40px',
         borderRadius: '50%',
-        backgroundColor: `${Colors.TEXT_PRIMARY}90`,
+        backgroundColor: theme === 'dark' 
+            ? 'rgba(0, 0, 0, 0.6)' 
+            : 'rgba(255, 255, 255, 0.9)',
+        backdropFilter: 'blur(10px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         cursor: 'pointer',
         zIndex: 2,
         transition: 'all 0.3s ease',
-        fontSize: '18px',
+        fontSize: '20px',
         fontWeight: 'bold',
-        color: Colors.BACKGROUND_SECONDARY,
+        color: theme === 'dark' ? '#ffffff' : '#000000',
+        border: `1px solid ${theme === 'dark' ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)'}`,
+        boxShadow: theme === 'dark'
+            ? '0 4px 12px rgba(0, 0, 0, 0.4)'
+            : '0 4px 12px rgba(0, 0, 0, 0.2)',
     });
 
     const contentStyle: CSSProperties = {
-        padding: isMobile ? '20px' : isTablet ? '20px' : '25px',
+        padding: isMobile ? '24px' : isTablet ? '24px' : '32px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
         flex: 1,
         overflow: 'auto',
+        gap: '20px',
     };
 
     const titleStyle: CSSProperties = {
-        fontSize: isMobile ? '17px' : isTablet ? '15px' : '18px',
-        fontWeight: 'bold',
-        margin: '0 0 10px 0',
+        fontSize: isMobile ? '20px' : isTablet ? '18px' : '22px',
+        fontWeight: '700',
+        margin: '0 0 12px 0',
         color: Colors.TEXT_PRIMARY,
         transition: 'color 0.3s ease',
+        lineHeight: '1.3',
+        letterSpacing: '-0.02em',
     };
 
     const descriptionStyle: CSSProperties = {
-        fontSize: isMobile ? '14px' : isTablet ? '13px' : '14px',
-        lineHeight: '1.6',
+        fontSize: isMobile ? '14px' : isTablet ? '13px' : '15px',
+        lineHeight: '1.7',
         color: Colors.TEXT_PRIMARY,
-        opacity: 0.85,
-        margin: '0 0 15px 0',
+        opacity: 0.75,
+        margin: '0 0 18px 0',
         display: '-webkit-box',
         WebkitLineClamp: 2,
         WebkitBoxOrient: 'vertical',
         overflow: 'hidden',
+        fontWeight: '400',
     };
 
     // Modal Styles
@@ -182,52 +213,57 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        backgroundColor: theme === 'dark' ? 'rgba(0, 0, 0, 0.85)' : 'rgba(0, 0, 0, 0.75)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         zIndex: 1000,
         padding: isMobile ? '20px' : '40px',
-        backdropFilter: 'blur(5px)',
+        backdropFilter: 'blur(8px)',
     };
 
     const modalContentStyle: CSSProperties = {
         backgroundColor: Colors.BACKGROUND_SECONDARY,
-        borderRadius: '20px',
-        maxWidth: isMobile ? '100%' : isTablet ? '700px' : '900px',
+        borderRadius: '24px',
+        maxWidth: isMobile ? '100%' : isTablet ? '720px' : '920px',
         width: '100%',
         maxHeight: '90vh',
         overflow: 'auto',
         position: 'relative',
-        boxShadow: '0 25px 50px rgba(0, 0, 0, 0.5)',
-        border: `2px solid ${Colors.TEXT_PRIMARY}20`,
+        boxShadow: theme === 'dark'
+            ? '0 30px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.1)'
+            : '0 30px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.1)',
+        border: `1px solid ${theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
     };
 
     const modalCloseButtonStyle: CSSProperties = {
         position: 'absolute',
-        top: '20px',
-        right: '20px',
-        width: '40px',
-        height: '40px',
+        top: '24px',
+        right: '24px',
+        width: '44px',
+        height: '44px',
         borderRadius: '50%',
-        backgroundColor: Colors.BACKGROUND_TERTIARY,
-        border: 'none',
+        backgroundColor: theme === 'dark' 
+            ? 'rgba(255, 255, 255, 0.1)' 
+            : 'rgba(0, 0, 0, 0.05)',
+        border: `1px solid ${theme === 'dark' ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.1)'}`,
         color: Colors.TEXT_PRIMARY,
-        fontSize: '24px',
+        fontSize: '22px',
         cursor: 'pointer',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         zIndex: 10,
         transition: 'all 0.3s ease',
+        backdropFilter: 'blur(10px)',
     };
 
     const modalImageContainerStyle: CSSProperties = {
         position: 'relative',
         width: '100%',
-        height: isMobile ? '250px' : isTablet ? '350px' : '450px',
+        height: isMobile ? '280px' : isTablet ? '380px' : '480px',
         backgroundColor: Colors.BACKGROUND_TERTIARY,
-        borderRadius: '20px 20px 0 0',
+        borderRadius: '24px 24px 0 0',
         overflow: 'hidden',
     };
 
@@ -238,41 +274,48 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
     };
 
     const modalBodyStyle: CSSProperties = {
-        padding: isMobile ? '25px' : isTablet ? '35px' : '45px',
+        padding: isMobile ? '28px' : isTablet ? '40px' : '48px',
     };
 
     const modalTitleStyle: CSSProperties = {
-        fontSize: isMobile ? '26px' : isTablet ? '32px' : '39px',
-        fontWeight: 'bold',
+        fontSize: isMobile ? '28px' : isTablet ? '36px' : '42px',
+        fontWeight: '700',
         color: Colors.TEXT_PRIMARY,
-        margin: '0 0 20px 0',
+        margin: '0 0 24px 0',
+        lineHeight: '1.2',
+        letterSpacing: '-0.02em',
     };
 
 
     const modalSectionTitleStyle: CSSProperties = {
-        fontSize: isMobile ? '16px' : '18px',
-        fontWeight: 'bold',
+        fontSize: isMobile ? '17px' : '19px',
+        fontWeight: '700',
         color: Colors.TEXT_PRIMARY,
-        margin: '0 0 15px 0',
+        margin: '0 0 18px 0',
         textTransform: 'uppercase',
-        letterSpacing: '1px',
+        letterSpacing: '1.2px',
+        opacity: 0.9,
     };
 
     const techContainerStyle: CSSProperties = {
         display: 'flex',
         flexWrap: 'wrap',
-        gap: '6px',
-        marginBottom: '15px',
+        gap: '8px',
+        marginBottom: '0',
     };
 
     const techBadgeStyle: CSSProperties = {
-        backgroundColor: Colors.BACKGROUND_TERTIARY,
+        backgroundColor: theme === 'dark' 
+            ? 'rgba(255, 255, 255, 0.08)' 
+            : 'rgba(0, 0, 0, 0.05)',
         color: Colors.TEXT_PRIMARY,
-        padding: isMobile ? '4px 10px' : '5px 12px',
-        borderRadius: '20px',
-        fontSize: isMobile ? '10px' : '11px',
-        fontWeight: '500',
+        padding: isMobile ? '5px 12px' : '6px 14px',
+        borderRadius: '12px',
+        fontSize: isMobile ? '11px' : '12px',
+        fontWeight: '600',
         transition: 'all 0.3s ease',
+        border: `1px solid ${theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.08)'}`,
+        backdropFilter: 'blur(10px)',
     };
 
     const linksContainerStyle: CSSProperties = {
@@ -285,16 +328,18 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
     const linkButtonStyle: CSSProperties = {
         display: 'flex',
         alignItems: 'center',
-        gap: '6px',
-        padding: isMobile ? '7px 14px' : isTablet ? '7px 14px' : '8px 16px',
-        borderRadius: '8px',
-        backgroundColor: 'transparent',
-        border: `2px solid ${Colors.TEXT_PRIMARY}`,
+        gap: '8px',
+        padding: isMobile ? '10px 16px' : isTablet ? '10px 16px' : '11px 20px',
+        borderRadius: '12px',
+        backgroundColor: theme === 'dark' 
+            ? 'rgba(255, 255, 255, 0.05)' 
+            : 'rgba(0, 0, 0, 0.03)',
+        border: `1px solid ${theme === 'dark' ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.15)'}`,
         color: Colors.TEXT_PRIMARY,
-        fontSize: isMobile ? '12px' : isTablet ? '12px' : '13px',
+        fontSize: isMobile ? '13px' : isTablet ? '13px' : '14px',
         fontWeight: '600',
         textDecoration: 'none',
-        transition: 'all 0.3s ease',
+        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
         cursor: 'pointer',
     };
 
@@ -354,12 +399,16 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                         <motion.div
                             style={navigationArrowStyle('left')}
                             onClick={handlePrevImage}
+                            whileHover={{ scale: 1.1, backgroundColor: theme === 'dark' ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 1)' }}
+                            whileTap={{ scale: 0.95 }}
                         >
                             ‹
                         </motion.div>
                         <motion.div
                             style={navigationArrowStyle('right')}
                             onClick={handleNextImage}
+                            whileHover={{ scale: 1.1, backgroundColor: theme === 'dark' ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 1)' }}
+                            whileTap={{ scale: 0.95 }}
                         >
                             ›
                         </motion.div>
@@ -394,7 +443,10 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                                 key={idx}
                                 style={techBadgeStyle}
                                 whileHover={{
-                                    backgroundColor: Colors.BACKGROUND_TERTIARY,
+                                    backgroundColor: theme === 'dark' 
+                                        ? 'rgba(255, 255, 255, 0.15)' 
+                                        : 'rgba(0, 0, 0, 0.1)',
+                                    transform: 'translateY(-2px)',
                                 }}
                             >
                                 {tech}
@@ -409,14 +461,72 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                 </div>
 
                 <div style={linksContainerStyle}>
-                    {project.githubLink && (
+                {project.websiteLink && (
+                        <motion.a
+                            href={project.websiteLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={linkButtonStyle}
+                            whileHover={{
+                                backgroundColor: theme === 'dark' 
+                                    ? 'rgba(255, 255, 255, 0.1)' 
+                                    : 'rgba(0, 0, 0, 0.08)',
+                                transform: 'translateY(-2px)',
+                                boxShadow: theme === 'dark'
+                                    ? '0 8px 20px rgba(0, 0, 0, 0.3)'
+                                    : '0 8px 20px rgba(0, 0, 0, 0.1)',
+                            }}
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <img 
+                                src={iconMap.website.icon} 
+                                alt="Website" 
+                                style={iconStyle}
+                            />
+                            Website
+                        </motion.a>
+                    )}
+                    {project.githubLinks && project.githubLinks.length > 0 ? (
+                        project.githubLinks.map((link, idx) => (
+                            <motion.a
+                                key={idx}
+                                href={link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={linkButtonStyle}
+                                whileHover={{
+                                    backgroundColor: theme === 'dark' 
+                                        ? 'rgba(255, 255, 255, 0.1)' 
+                                        : 'rgba(0, 0, 0, 0.08)',
+                                    transform: 'translateY(-2px)',
+                                    boxShadow: theme === 'dark'
+                                        ? '0 8px 20px rgba(0, 0, 0, 0.3)'
+                                        : '0 8px 20px rgba(0, 0, 0, 0.1)',
+                                }}
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                <img 
+                                    src={iconMap.github.icon} 
+                                    alt="GitHub" 
+                                    style={iconStyle}
+                                />
+                                {link.label}
+                            </motion.a>
+                        ))
+                    ) : project.githubLink ? (
                         <motion.a
                             href={project.githubLink}
                             target="_blank"
                             rel="noopener noreferrer"
                             style={linkButtonStyle}
                             whileHover={{
-                                backgroundColor: Colors.BACKGROUND_TERTIARY,
+                                backgroundColor: theme === 'dark' 
+                                    ? 'rgba(255, 255, 255, 0.1)' 
+                                    : 'rgba(0, 0, 0, 0.08)',
+                                transform: 'translateY(-2px)',
+                                boxShadow: theme === 'dark'
+                                    ? '0 8px 20px rgba(0, 0, 0, 0.3)'
+                                    : '0 8px 20px rgba(0, 0, 0, 0.1)',
                             }}
                             onClick={(e) => e.stopPropagation()}
                         >
@@ -427,7 +537,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                             />
                             Code
                         </motion.a>
-                    )}
+                    ) : null}
                     {project.liveLink && (
                         <motion.a
                             href={project.liveLink}
@@ -435,7 +545,13 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                             rel="noopener noreferrer"
                             style={linkButtonStyle}
                             whileHover={{
-                                backgroundColor: Colors.BACKGROUND_TERTIARY,
+                                backgroundColor: theme === 'dark' 
+                                    ? 'rgba(255, 255, 255, 0.1)' 
+                                    : 'rgba(0, 0, 0, 0.08)',
+                                transform: 'translateY(-2px)',
+                                boxShadow: theme === 'dark'
+                                    ? '0 8px 20px rgba(0, 0, 0, 0.3)'
+                                    : '0 8px 20px rgba(0, 0, 0, 0.1)',
                             }}
                             onClick={(e) => e.stopPropagation()}
                         >
@@ -445,25 +561,6 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                                 style={iconStyle}
                             />
                             Demo
-                        </motion.a>
-                    )}
-                    {project.websiteLink && (
-                        <motion.a
-                            href={project.websiteLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={linkButtonStyle}
-                            whileHover={{
-                                backgroundColor: Colors.BACKGROUND_TERTIARY,
-                            }}
-                            onClick={(e) => e.stopPropagation()}
-                        >
-                            <img 
-                                src={iconMap.website.icon} 
-                                alt="Website" 
-                                style={iconStyle}
-                            />
-                            Website
                         </motion.a>
                     )}
                 </div>
@@ -522,14 +619,18 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                             {images.length > 1 && (
                                 <>
                                     <motion.div
-                                        style={{...navigationArrowStyle('left'), width: '45px', height: '45px', fontSize: '22px'}}
+                                        style={{...navigationArrowStyle('left'), width: '48px', height: '48px', fontSize: '24px'}}
                                         onClick={handlePrevImage}
+                                        whileHover={{ scale: 1.1, backgroundColor: theme === 'dark' ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 1)' }}
+                                        whileTap={{ scale: 0.95 }}
                                     >
                                         ‹
                                     </motion.div>
                                     <motion.div
-                                        style={{...navigationArrowStyle('right'), width: '45px', height: '45px', fontSize: '22px'}}
+                                        style={{...navigationArrowStyle('right'), width: '48px', height: '48px', fontSize: '24px'}}
                                         onClick={handleNextImage}
+                                        whileHover={{ scale: 1.1, backgroundColor: theme === 'dark' ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 1)' }}
+                                        whileTap={{ scale: 0.95 }}
                                     >
                                         ›
                                     </motion.div>
@@ -562,8 +663,14 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                                     opacity: 0.9,
                                     marginBottom: '30px',
                                     fontStyle: 'italic',
-                                    borderLeft: `4px solid ${Colors.TEXT_PRIMARY}`,
+                                    borderLeft: `4px solid ${theme === 'dark' ? '#6366F1' : '#3B82F6'}`,
                                     paddingLeft: '20px',
+                                    backgroundColor: theme === 'dark' 
+                                        ? 'rgba(99, 102, 241, 0.1)' 
+                                        : 'rgba(59, 130, 246, 0.08)',
+                                    borderRadius: '8px',
+                                    padding: '16px 20px',
+                                    marginLeft: '-4px',
                                 }}>
                                     {project.intro}
                                 </p>
@@ -608,7 +715,10 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                                                 fontSize: '13px',
                                             }}
                                             whileHover={{
-                                                backgroundColor: Colors.BACKGROUND_TERTIARY,
+                                                backgroundColor: theme === 'dark' 
+                                                    ? 'rgba(255, 255, 255, 0.15)' 
+                                                    : 'rgba(0, 0, 0, 0.1)',
+                                                transform: 'translateY(-2px)',
                                             }}
                                         >
                                             {tech}
@@ -620,52 +730,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                             <div>
                                 <h3 style={modalSectionTitleStyle}>Project Links</h3>
                                 <div style={{display: 'flex', gap: '15px', flexWrap: 'wrap'}}>
-                                    {project.githubLink && (
-                                        <motion.a
-                                            href={project.githubLink}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            style={{
-                                                ...linkButtonStyle,
-                                                padding: '12px 24px',
-                                                fontSize: '15px',
-                                            }}
-                                            whileHover={{
-                                                backgroundColor: Colors.BACKGROUND_TERTIARY,
-                                            }}
-                                            onClick={(e) => e.stopPropagation()}
-                                        >
-                                            <img 
-                                                src={iconMap.github.icon} 
-                                                alt="GitHub" 
-                                                style={{width: '20px', height: '20px'}}
-                                            />
-                                            View Source Code
-                                        </motion.a>
-                                    )}
-                                    {project.liveLink && (
-                                        <motion.a
-                                            href={project.liveLink}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            style={{
-                                                ...linkButtonStyle,
-                                                padding: '12px 24px',
-                                                fontSize: '15px',
-                                            }}
-                                            whileHover={{
-                                                backgroundColor: Colors.BACKGROUND_TERTIARY,
-                                            }}
-                                            onClick={(e) => e.stopPropagation()}
-                                        >
-                                            <img 
-                                                src={iconMap.diagonalArrowDark.icon} 
-                                                alt="Live Demo" 
-                                                style={{width: '20px', height: '20px'}}
-                                            />
-                                            View Live Demo
-                                        </motion.a>
-                                    )}
+                                    {/* Support multiple GitHub links */}
                                     {project.websiteLink && (
                                         <motion.a
                                             href={project.websiteLink}
@@ -687,6 +752,84 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                                                 style={{width: '20px', height: '20px'}}
                                             />
                                             Visit Website
+                                        </motion.a>
+                                    )}
+                                    {project.githubLinks && project.githubLinks.length > 0 ? (
+                                        project.githubLinks.map((link, idx) => (
+                                            <motion.a
+                                                key={idx}
+                                                href={link.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                style={{
+                                                    ...linkButtonStyle,
+                                                    padding: '12px 24px',
+                                                    fontSize: '15px',
+                                                }}
+                                                whileHover={{
+                                                    backgroundColor: theme === 'dark' 
+                                                        ? 'rgba(255, 255, 255, 0.1)' 
+                                                        : 'rgba(0, 0, 0, 0.08)',
+                                                    transform: 'translateY(-2px)',
+                                                    boxShadow: theme === 'dark'
+                                                        ? '0 8px 20px rgba(0, 0, 0, 0.3)'
+                                                        : '0 8px 20px rgba(0, 0, 0, 0.1)',
+                                                }}
+
+                                                onClick={(e) => e.stopPropagation()}
+                                            >
+                                                <img 
+                                                    src={iconMap.github.icon} 
+                                                    alt="GitHub" 
+                                                    style={{width: '20px', height: '20px'}}
+                                                />
+                                                {link.label}
+                                            </motion.a>
+                                        ))
+                                    ) : project.githubLink ? (
+                                        <motion.a
+                                            href={project.githubLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            style={{
+                                                ...linkButtonStyle,
+                                                padding: '12px 24px',
+                                                fontSize: '15px',
+                                            }}
+                                            whileHover={{
+                                                backgroundColor: Colors.BACKGROUND_TERTIARY,
+                                            }}
+                                            onClick={(e) => e.stopPropagation()}
+                                        >
+                                            <img 
+                                                src={iconMap.github.icon} 
+                                                alt="GitHub" 
+                                                style={{width: '20px', height: '20px'}}
+                                            />
+                                            View Source Code
+                                        </motion.a>
+                                    ) : null}
+                                    {project.liveLink && (
+                                        <motion.a
+                                            href={project.liveLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            style={{
+                                                ...linkButtonStyle,
+                                                padding: '12px 24px',
+                                                fontSize: '15px',
+                                            }}
+                                            whileHover={{
+                                                backgroundColor: Colors.BACKGROUND_TERTIARY,
+                                            }}
+                                            onClick={(e) => e.stopPropagation()}
+                                        >
+                                            <img 
+                                                src={iconMap.diagonalArrowDark.icon} 
+                                                alt="Live Demo" 
+                                                style={{width: '20px', height: '20px'}}
+                                            />
+                                            View Live Demo
                                         </motion.a>
                                     )}
                                 </div>
